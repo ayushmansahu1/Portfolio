@@ -22,12 +22,25 @@
     <path d="M98 228q5-29 25-29t25 29m1 0q5-29 25-29t25 29m1 0q5-29 25-29t25 29m1 0q5-29 25-29t25 29m1 0q5-29 25-29t25 29" fill="#202a24"/>
   </symbol>
   <symbol id="visual-internship" viewBox="0 0 600 250">
-    <rect width="600" height="250" rx="4" fill="url(#panel)"/><circle cx="420" cy="120" r="128" fill="url(#halo)"/>
-    <rect x="115" y="42" width="345" height="153" rx="12" fill="#0c1210" stroke="#81907a" stroke-width="3"/><rect x="132" y="59" width="311" height="118" rx="4" fill="#17231e"/>
-    <circle cx="153" cy="78" r="4" fill="#d3ae70"/><circle cx="169" cy="78" r="4" fill="#74886e"/><circle cx="185" cy="78" r="4" fill="#667984"/>
-    <path d="m158 103 16 10-16 11m29 0h42m-71 18 16 10-16 11m29 0h83" fill="none" stroke="#b0c39b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="m322 100 28 27-37 40-28-27z" fill="#263630" stroke="url(#brass)" stroke-width="3"/><circle cx="336" cy="126" r="10" fill="none" stroke="#ead7a3" stroke-width="3"/>
-    <path d="M93 197h389l-27 21H121z" fill="#303a32" stroke="#78856d" stroke-width="2"/><path d="M249 198h78l9 11h-96z" fill="#101713"/>
-    <g fill="#ead7a3"><circle cx="497" cy="65" r="3"/><circle cx="516" cy="95" r="2"/><circle cx="477" cy="161" r="3"/></g>
+    <rect width="600" height="250" rx="4" fill="url(#panel)"/><circle cx="410" cy="116" r="145" fill="url(#halo)"/>
+    <path d="M0 205h600" stroke="#a49a78" stroke-opacity=".16"/>
+    <g fill="none" stroke="#718276" stroke-opacity=".18"><path d="M0 48h600M0 82h600M0 116h600M0 150h600M0 184h600"/><path d="M54 0v205m54-205v205m54-205v205m54-205v205m54-205v205m54-205v205m54-205v205m54-205v205m54-205v205m54-205v205"/></g>
+    <rect x="62" y="29" width="365" height="167" rx="10" fill="#090e0d" stroke="#87957d" stroke-width="2"/>
+    <rect x="74" y="41" width="341" height="143" rx="5" fill="#17221d"/>
+    <path d="M79 46h331v20H79z" fill="#222d26"/><circle cx="92" cy="56" r="3" fill="#d3ae70"/><circle cx="103" cy="56" r="3" fill="#718776"/><circle cx="114" cy="56" r="3" fill="#566c65"/>
+    <path d="M132 56h61" stroke="#b3bd9c" stroke-opacity=".52" stroke-width="2" stroke-linecap="round"/>
+    <rect x="86" y="78" width="117" height="93" rx="3" fill="#111a16" stroke="#53685a" stroke-opacity=".65"/>
+    <path d="m104 124 16-17 16 11 21-24 27 18" fill="none" stroke="#d0b376" stroke-width="2"/>
+    <g fill="#e6ca8d"><circle cx="120" cy="107" r="3"/><circle cx="136" cy="118" r="3"/><circle cx="157" cy="94" r="3"/><circle cx="184" cy="112" r="3"/></g>
+    <path d="M98 157h43m-43 6h66" stroke="#779282" stroke-width="2" stroke-linecap="round"/>
+    <path d="M219 82h87m-87 10h56m-56 10h71m-71 10h46m-46 10h82" stroke="#829883" stroke-width="3" stroke-linecap="round" opacity=".72"/>
+    <path d="M223 143h43m-43 10h70" stroke="#b48b63" stroke-width="3" stroke-linecap="round" opacity=".62"/>
+    <path d="m365 82 31 12v26c0 24-14 41-31 51-18-10-31-27-31-51V94z" fill="#1d2b23" stroke="url(#brass)" stroke-width="3"/>
+    <path d="M354 120v-7a11 11 0 0 1 22 0v7m-27 0h32v24h-32z" fill="none" stroke="#ead7a3" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M43 200h403l-29 20H74z" fill="#303a32" stroke="#78856d" stroke-width="2"/><path d="M213 201h76l9 10h-94z" fill="#101713"/>
+    <g fill="#ead7a3"><circle cx="476" cy="54" r="3"/><circle cx="515" cy="85" r="2"/><circle cx="478" cy="163" r="3"/></g>
+    <g fill="none" stroke="#889783" stroke-opacity=".55"><circle cx="496" cy="108" r="34"/><circle cx="496" cy="108" r="23"/></g>
+    <path d="m496 91 11 5v10c0 9-5 15-11 19-6-4-11-10-11-19V96z" fill="#25332b" stroke="#d2b576" stroke-width="1.5"/>
   </symbol>
   <symbol id="visual-team" viewBox="0 0 600 250">
     <rect width="600" height="250" rx="4" fill="url(#panel)"/><circle cx="300" cy="119" r="132" fill="url(#halo)"/>
