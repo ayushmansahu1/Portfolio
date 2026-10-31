@@ -432,3 +432,7 @@ body { background: #080709; }
 .project-live > span { color: var(--gold-light); font-size: 13px; }
 .project-live:hover { border-color: rgba(241, 216, 163, .75); background: rgba(211, 174, 112, .09); color: #fff0d2; }
 .project-live:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+@media (min-width: 761px) {
+  .projects-section.section-wrap { padding-right: clamp(26px, 3.5vw, 58px); padding-left: clamp(26px, 3.5vw, 58px); }
+  .project-grid { column-gap: 22px; }
+}
