@@ -421,6 +421,8 @@ body { background: #080709; }
 .avni-project-image { object-position: center 43%; }
 .rahi-project-image { object-position: center 50%; }
 .ocean-project-image { object-position: center top; }
+.house-project-image { object-position: center 37%; }
+.waste-project-image { object-position: center 50%; }
 .has-project-image::after { content: ""; position: absolute; z-index: 1; inset: 0; background: linear-gradient(0deg, rgba(10, 10, 12, .72), rgba(10, 10, 12, .04) 40%, transparent 75%); pointer-events: none; }
 .has-project-image .illustration-caption { z-index: 2; color: #f0e4cc; text-shadow: 0 1px 8px rgba(0, 0, 0, .8); }
 .project-card:hover .project-image { transform: scale(1.035); filter: saturate(1); }

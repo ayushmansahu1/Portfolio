@@ -112,6 +112,7 @@ if (!reducedMotion.matches && "IntersectionObserver" in window) {
 }
 
 if (flyingWizard) {
+  const heroSection = document.querySelector(".hero");
   let previousY = 0;
   let previousTime = 0;
   let animationFrame = 0;
@@ -134,7 +135,8 @@ if (flyingWizard) {
     flyingWizard.style.setProperty("--flight-y", `${y}px`);
     flyingWizard.style.setProperty("--flight-direction", cycle < 0.5 ? "1" : "-1");
     flyingWizard.style.setProperty("--flight-tilt", `${Math.max(-8, Math.min(8, verticalSpeed * 160))}deg`);
-    flyingWizard.classList.add("is-visible");
+    const stillInOpeningScene = !heroSection || window.scrollY < heroSection.offsetHeight * 0.85;
+    flyingWizard.classList.toggle("is-visible", stillInOpeningScene);
 
     previousY = y;
     previousTime = timestamp;
@@ -160,6 +162,12 @@ if (flyingWizard) {
     flyingWizard.style.setProperty("--flight-y", "20vh");
     flyingWizard.classList.add("is-visible");
   };
+
+  window.addEventListener("scroll", () => {
+    if (reducedMotion.matches && heroSection) {
+      flyingWizard.classList.toggle("is-visible", window.scrollY < heroSection.offsetHeight * 0.85);
+    }
+  }, { passive: true });
 
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
