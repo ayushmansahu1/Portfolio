@@ -755,6 +755,8 @@ html[data-theme="light"] .page-progress { background: rgba(54, 66, 56, .12); }
   .spell-card:hover, .spell-card:focus-within { transform: none; }
   .footprints { left: -7px; }
   .candle { height: 32px; }
+  html[data-theme="light"] .hero::before { background: linear-gradient(180deg, rgba(245, 241, 232, .98) 0%, rgba(245, 241, 232, .92) 31%, rgba(245, 241, 232, .4) 51%, transparent 68%, rgba(8, 11, 10, .18) 100%); }
+  html[data-theme="light"] .hero-art::before { background: linear-gradient(180deg, transparent 10%, rgba(8, 11, 10, .08) 45%, rgba(8, 11, 10, .24) 100%); }
 }
 @media (prefers-reduced-motion: reduce) {
   #nox-veil, .lumos-toggle { transition: none; }

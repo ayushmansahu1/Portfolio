@@ -357,6 +357,7 @@ if (flyingWizard) {
   document.querySelectorAll("#skills .skill-card").forEach((card) => card.classList.add("spell-card"));
   const timeline = document.querySelector("#work .timeline");
   if (timeline && !reducedMotion.matches) {
+    timeline.style.position ||= "relative";
     const footprints = document.createElement("div");
     footprints.className = "footprints";
     footprints.setAttribute("aria-hidden", "true");
