@@ -8,13 +8,23 @@
     <title>Ayushman Sahu — A little bit of magic, a lot of code</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="page-progress" aria-hidden="true"><span></span></div>
+    <div class="magic-cursor" aria-hidden="true"></div>
+    <aside class="chapter-hud" aria-label="Page progress">
+      <span class="chapter-hud-label">CURRENT CHAPTER</span>
+      <div class="chapter-hud-row">
+        <span class="chapter-hud-count" aria-live="polite"><strong>01</strong><i> / 08</i></span>
+        <button class="chapter-next" type="button" aria-label="Move to the next chapter">↓</button>
+      </div>
+      <span class="chapter-hud-name">The arrival</span>
+      <span class="chapter-hud-track"><span></span></span>
+    </aside>
     <div class="page-shell">
       <header class="site-header">
         <a class="wordmark" href="#home" aria-label="Ayushman Sahu, home">
@@ -228,21 +238,23 @@
           </div>
           <div class="project-grid">
             <article class="project-card project-large">
-              <div class="project-illustration illustration-rahi"><div class="map-grid"></div><span class="map-pin pin-one"></span><span class="map-pin pin-two"></span><span class="map-pin pin-three"></span><div class="map-route"></div><div class="illustration-caption">LIVE · ROAMING THE MAP</div></div>
+              <div class="project-illustration illustration-rahi has-project-image"><img class="project-image rahi-project-image" src="assets/rahi-project.png" alt="RAHI connected intelligence platform homepage" loading="lazy"><div class="illustration-caption">RAHI · CONNECTED INTELLIGENCE</div></div>
               <div class="project-meta"><span>01 / LOCATION &amp; DASHBOARDS</span><span>2025 — PRESENT</span></div>
               <h3>Rahi Dashboard <span class="project-client">IIT ROPAR</span></h3>
               <p>A real-time location-tracking dashboard with MapMyIndia integration. Built dynamic, responsive interfaces with Firebase authentication and live data synchronization.</p>
               <div class="tag-row"><span>React</span><span>Tailwind CSS</span><span>Firebase</span><span>MapMyIndia</span></div>
+              <a class="project-live" href="https://rahi.r2e.in/" target="_blank" rel="noreferrer">Visit live site <strong>rahi.r2e.in</strong><span aria-hidden="true">↗</span></a>
             </article>
             <article class="project-card">
-              <div class="project-illustration illustration-avni"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="orbit-ring"></div><div class="orbit-center">a.</div><span class="floating-label label-one">STARTUPS</span><span class="floating-label label-two">MENTORSHIP</span><span class="floating-label label-three">IDEAS → IMPACT</span></div>
+              <div class="project-illustration illustration-avni has-project-image"><img class="project-image avni-project-image" src="assets/avni-project.png" alt="AVNI startups and mentorship platform homepage" loading="lazy"><div class="illustration-caption">AVNI · STARTUP ECOSYSTEM</div></div>
               <div class="project-meta"><span>02 / AI &amp; ECOSYSTEMS</span><span>2025 — PRESENT</span></div>
               <h3>AVNI Dashboard <span class="project-client">IIT ROPAR</span></h3>
               <p>An AI-assisted startup ecosystem platform connecting startups, incubators, investors, and organizations. Includes profiles, events, programs, mentoring, applications, and reporting.</p>
               <div class="tag-row"><span>React</span><span>Next.js</span><span>Tailwind CSS</span><span>Claude AI</span></div>
+              <a class="project-live" href="https://avni.app/" target="_blank" rel="noreferrer">Visit live site <strong>avni.app</strong><span aria-hidden="true">↗</span></a>
             </article>
             <article class="project-card">
-              <div class="project-illustration illustration-ocean"><div class="sun-disc"></div><div class="wave wave-one"></div><div class="wave wave-two"></div><div class="wave wave-three"></div><div class="ocean-creature">✧</div><span class="illustration-caption">THE DEEP IS FULL OF STORIES</span></div>
+              <div class="project-illustration illustration-ocean has-project-image"><img class="project-image ocean-project-image" src="assets/ocean-literacy.png" alt="Ocean Literacy virtual reality game scene with an underwater diver" loading="lazy"><div class="illustration-caption">OCEAN LITERACY · VR GAME</div></div>
               <div class="project-meta"><span>03 / GAMES &amp; EDUCATION</span><span>GAME PROJECT</span></div>
               <h3>Ocean Literacy Game</h3>
               <p>A cross-platform mobile game inviting players aged 12–30 to explore ocean conservation through quizzes, missions, and immersive 3D environments.</p>
@@ -300,7 +312,7 @@
           </aside>
         </section>
 
-        <section class="cert-section section-wrap" aria-labelledby="cert-heading">
+        <section class="cert-section section-wrap" id="certifications" aria-labelledby="cert-heading">
           <div class="section-label"><span>06</span> FIELD GUIDE, MANY MARGINS</div>
           <div class="cert-heading-row"><h2 class="display-title" id="cert-heading">Things I’ve <em>learned.</em></h2><span class="cert-count">A COLLECTION OF COURSES &amp; CERTIFICATIONS</span></div>
           <div class="cert-cloud">
