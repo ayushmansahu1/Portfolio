@@ -652,7 +652,7 @@ body.alohomora .secret-chapter { display: block; animation: secret-open .8s ease
   position: relative;
   display: flex;
   flex: 0 0 clamp(290px, 28vw, 360px);
-  min-height: 270px;
+  min-height: 380px;
   flex-direction: column;
   padding: 22px 22px 19px;
   overflow: hidden;
@@ -660,13 +660,15 @@ body.alohomora .secret-chapter { display: block; animation: secret-open .8s ease
   background: linear-gradient(145deg, rgba(211, 174, 112, .065), transparent 52%), #191e19;
   transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
 }
+.linkedin-post-visual { display: block; flex: 0 0 150px; height: 150px; margin: -22px -22px 18px; overflow: hidden; border-bottom: 1px solid rgba(211, 174, 112, .17); background: #101714; }
+.linkedin-post-visual svg { display: block; width: 100%; height: 100%; }
 .linkedin-post-card::after { position: absolute; right: -28px; bottom: -62px; width: 150px; height: 150px; border: 1px solid rgba(211, 174, 112, .1); border-radius: 50%; content: ""; transition: transform .5s ease; }
 .linkedin-post-card:hover { transform: translateY(-5px); border-color: rgba(211, 174, 112, .48); box-shadow: 0 18px 38px rgba(0, 0, 0, .18); }
 .linkedin-post-card:hover::after { transform: scale(1.18); }
 .linkedin-post-card:focus-visible, .linkedin-all-posts:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 4px; }
 .linkedin-post-index { display: flex; align-items: center; gap: 12px; color: var(--gold-light); font: 500 12px var(--serif); }
 .linkedin-post-index > span { color: var(--muted); font: 600 8px var(--sans); letter-spacing: 1.4px; }
-.linkedin-post-card h3 { max-width: 280px; margin: 35px 0 12px; color: var(--paper); font: 500 23px/1.15 var(--serif); }
+.linkedin-post-card h3 { max-width: 280px; margin: 7px 0 12px; color: var(--paper); font: 500 23px/1.15 var(--serif); }
 .linkedin-post-card p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.75; }
 .linkedin-post-footer { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 24px; color: var(--gold-light); font-size: 8px; font-weight: 600; letter-spacing: 1.2px; }
 .linkedin-post-footer > span, .linkedin-all-posts > span { font-size: 14px; transition: transform .2s ease; }
@@ -685,8 +687,9 @@ html[data-theme="light"] .linkedin-carousel-toggle:hover { background: rgba(148,
   .linkedin-heading { display: block; margin-bottom: 25px; }
   .linkedin-heading > p { margin-top: 12px; }
   .linkedin-post-track { gap: 11px; }
-  .linkedin-post-card { flex-basis: min(82vw, 340px); min-height: 230px; padding: 20px; }
-  .linkedin-post-card h3 { margin-top: 24px; font-size: 22px; }
+  .linkedin-post-card { flex-basis: min(82vw, 340px); min-height: 360px; padding: 20px; }
+  .linkedin-post-visual { flex-basis: 132px; height: 132px; margin: -20px -20px 16px; }
+  .linkedin-post-card h3 { margin-top: 7px; font-size: 22px; }
   .linkedin-all-posts { margin-top: 23px; }
 }
 @media (prefers-reduced-motion: reduce) {
