@@ -435,4 +435,9 @@ body { background: #080709; }
 @media (min-width: 761px) {
   .projects-section.section-wrap { padding-right: clamp(26px, 3.5vw, 58px); padding-left: clamp(26px, 3.5vw, 58px); }
   .project-grid { column-gap: 22px; }
+  .project-grid .project-illustration { height: 300px; }
+}
+@media (max-width: 760px) {
+  .project-grid .project-illustration { height: 245px; }
+  .project-large .project-illustration { height: 245px; }
 }
