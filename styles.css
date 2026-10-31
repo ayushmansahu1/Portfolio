@@ -92,10 +92,12 @@ button { font: inherit; }
 .intro-text p { margin: 0 0 13px; }
 .inline-link { display: inline-block; margin-top: 9px; color: var(--gold-light); font-size: 10px; }
 .quick-facts { margin-top: 62px; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); padding-top: 26px; }
+.quick-facts-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .quick-facts > div { display: grid; gap: 7px; }
 .fact-number { color: #ece1cc; font: 500 33px var(--serif); }
 .fact-number > span { color: var(--gold); font-size: 22px; }
 .fact-label { color: #939386; font-size: 10px; }
+.fact-detail { color: #818477; font-size: 9px; line-height: 1.4; }
 
 .work-section { padding-top: 99px; padding-bottom: 94px; }
 .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 28px; margin-bottom: 50px; }
@@ -277,7 +279,10 @@ button { font: inherit; }
   .display-title { font-size: clamp(37px, 9vw, 48px); }
   .intro-text p { font-size: 11px; }
   .quick-facts { grid-template-columns: repeat(2, 1fr); gap: 24px 12px; margin-top: 35px; }
+  .quick-facts-three { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 10px; }
   .fact-number { font-size: 29px; }
+  .quick-facts-three .fact-label { font-size: 9px; line-height: 1.4; }
+  .quick-facts-three .fact-detail { font-size: 8px; }
   .section-heading { display: block; margin-bottom: 34px; }
   .section-heading > p { margin-top: 12px; }
   .work-section, .projects-section { padding-top: 70px; padding-bottom: 68px; }
@@ -699,6 +704,7 @@ html[data-theme="light"] .skills-heading > p { color: #59645b; }
 html[data-theme="light"] .section-label > span { color: #748073; }
 html[data-theme="light"] .fact-number { color: #303b33; }
 html[data-theme="light"] .fact-label,
+html[data-theme="light"] .fact-detail,
 html[data-theme="light"] .timeline-date,
 html[data-theme="light"] .education-year,
 html[data-theme="light"] .grade-note,
