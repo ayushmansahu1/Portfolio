@@ -3,7 +3,7 @@ const navigation = document.querySelector("#primary-navigation");
 const flyingWizard = document.querySelector(".flying-wizard");
 const pageProgress = document.querySelector(".page-progress span");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-const chapterSections = [...document.querySelectorAll("main > section:not(.secret-chapter)")];
+const chapterSections = [...document.querySelectorAll("main > section:not(.secret-chapter):not(.linkedin-section)")];
 const chapterCount = document.querySelector(".chapter-hud-count");
 const chapterName = document.querySelector(".chapter-hud-name");
 const chapterTrack = document.querySelector(".chapter-hud-track > span");
@@ -139,7 +139,7 @@ if (!reducedMotion.matches && "IntersectionObserver" in window) {
     { threshold: 0.1, rootMargin: "0px 0px -35px 0px" }
   );
   const revealTargets = document.querySelectorAll(
-    ".section-label, .display-title, .project-card, .timeline-item, .skill-card, .education-item, .award, .cert-cloud > span, .contact-card"
+    ".section-label, .display-title, .project-card, .linkedin-post-card, .timeline-item, .skill-card, .education-item, .award, .cert-cloud > span, .contact-card"
   );
 
   revealTargets.forEach((target) => {
