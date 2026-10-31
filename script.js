@@ -238,6 +238,35 @@ if (flyingWizard) {
   const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   const body = document.body;
 
+  // Duplicate the original sequence once so it can wrap without a visible reset.
+  const postTrack = document.querySelector(".linkedin-post-track");
+  const carouselToggle = document.querySelector(".linkedin-carousel-toggle");
+  if (postTrack) {
+    const originalPosts = [...postTrack.children];
+    if (!reducedMotion.matches && originalPosts.length > 1) {
+      originalPosts.forEach((post) => {
+        const duplicate = post.cloneNode(true);
+        duplicate.classList.remove("reveal-ready", "is-revealed");
+        duplicate.setAttribute("aria-hidden", "true");
+        duplicate.setAttribute("tabindex", "-1");
+        duplicate.querySelectorAll("a, button, [tabindex]").forEach((element) => element.setAttribute("tabindex", "-1"));
+        postTrack.appendChild(duplicate);
+      });
+      postTrack.classList.add("is-looping");
+    } else if (carouselToggle) {
+      carouselToggle.hidden = true;
+    }
+
+    carouselToggle?.addEventListener("click", () => {
+      const isPaused = postTrack.classList.toggle("is-paused");
+      carouselToggle.setAttribute("aria-pressed", String(isPaused));
+      carouselToggle.setAttribute("aria-label", isPaused ? "Resume LinkedIn post carousel" : "Pause LinkedIn post carousel");
+      const label = carouselToggle.querySelector("span");
+      if (label) label.textContent = isPaused ? "RESUME" : "PAUSE";
+      carouselToggle.firstChild.textContent = isPaused ? "▶ " : "Ⅱ ";
+    });
+  }
+
   // Sparkle trail: the existing SVG wand stays the only cursor.
   if (finePointer && !reducedMotion.matches) {
     const canvas = document.createElement("canvas");
