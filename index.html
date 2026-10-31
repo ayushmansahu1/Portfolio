@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#11130f">
+    <meta name="description" content="The portfolio of Ayushman Sahu: software developer, cybersecurity trainer, and curious builder of things that matter.">
+    <title>Ayushman Sahu — A little bit of magic, a lot of code</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page-progress" aria-hidden="true"><span></span></div>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="wordmark" href="#home" aria-label="Ayushman Sahu, home">
+          <span class="wordmark-seal" aria-hidden="true">A</span>
+          <span>AYUSHMAN <span class="wordmark-light">SAHU</span></span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+          <span></span><span></span><span></span>
+          <span class="visually-hidden">Toggle navigation</span>
+        </button>
+        <nav class="navigation" id="primary-navigation" aria-label="Main navigation">
+          <a href="#about">The story</a>
+          <a href="#work">Field notes</a>
+          <a href="#projects">Creations</a>
+          <a href="#skills">Spellbook</a>
+          <a class="nav-contact" href="#contact">Say hello <span aria-hidden="true">↗</span></a>
+        </nav>
+      </header>
+
+      <div class="flying-wizard" aria-hidden="true">
+        <svg viewBox="0 0 200 118" focusable="false">
+          <defs>
+            <filter id="flight-glow" x="-60%" y="-70%" width="220%" height="240%">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <g class="flight-trail" fill="#e1c383" filter="url(#flight-glow)">
+            <path d="m22 28 2.2 6.8L31 37l-6.8 2.2L22 46l-2.2-6.8L13 37l6.8-2.2z"/>
+            <path d="m55 50 1.4 4.2L61 56l-4.6 1.8L55 62l-1.4-4.2L49 56l4.6-1.8z"/>
+            <circle cx="40" cy="69" r="1.7"/><circle cx="74" cy="27" r="1.5"/>
+            <path d="m81 68 1.5 4.5L87 74l-4.5 1.5L81 80l-1.5-4.5L75 74l4.5-1.5z"/>
+          </g>
+          <g class="flight-broom" fill="#a68550" stroke="#dac18a" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m43 91 127-30" fill="none" stroke-width="4"/>
+            <path d="m164 60 19-9-8 15 13 5-18-1-11 9 5-13-10-5z" stroke-width="1"/>
+            <path d="m164 60 9 9m-19-4 20 1m-15-10 12 13" fill="none" stroke-width="1.3"/>
+          </g>
+          <g class="flight-rider">
+            <path d="m112 72 22-9 13 12-29 10-19 2 5-9z" fill="#c6a463"/>
+            <path d="m115 63 17-11 22 15-15 17-25-3-7 12-17-1 9-22z" fill="#78846c"/>
+            <path d="m108 65-19 12 9 4 17-10" fill="none" stroke="#dfcfac" stroke-linecap="round" stroke-width="4"/>
+            <circle cx="126" cy="43" r="10" fill="#e1c8a0"/>
+            <path d="M115 41q9-17 26-9l7 7-22-2-9 8z" fill="#37352b"/>
+            <path d="m113 35 14-22 13 21q-12-5-27 1" fill="#d0af70" stroke="#ecd29b" stroke-linejoin="round" stroke-width="1.2"/>
+            <path d="m117 35 16-2" stroke="#78613b" stroke-width="2"/>
+            <path d="m116 80-19 10-11-3m39-1 13 11 9-3" fill="none" stroke="#e1c8a0" stroke-linecap="round" stroke-width="4"/>
+            <path d="m87 88-9 1m81 7-9 1" stroke="#c6a463" stroke-linecap="round" stroke-width="3"/>
+          </g>
+        </svg>
+      </div>
+
+      <main id="main">
+        <section class="hero" id="home" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="location-dot"></span> SOFTWARE DEVELOPER <span class="eyebrow-slash">/</span> CYBERSECURITY EDUCATOR</p>
+            <h1 id="hero-title">AYUSHMAN<br><span>SAHU<span class="hero-name-period">.</span></span></h1>
+            <p class="hero-manifesto">A little bit of <em>magic.</em> A lot of code.</p>
+            <p class="hero-intro">I build useful digital experiences and teach people how to stay safe online. Always curious about what technology can make possible.</p>
+            <div class="hero-actions">
+              <a class="button button-gold" href="#projects">Explore my work <span aria-hidden="true">↗</span></a>
+              <a class="text-link" href="mailto:sahuayushman679@gmail.com">Get in touch <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="hero-location"><span class="location-dot"></span> Brahmapur, Odisha, India <span class="location-divider">·</span> Open to what’s next</div>
+          </div>
+          <div class="hero-art" aria-label="An original illustration of a moonlit castle above a forest" role="img">
+            <div class="art-glow"></div>
+            <div class="moon"></div>
+            <div class="constellation constellation-one">✦ <span>·</span> &nbsp;✧<br>&nbsp;&nbsp;· &nbsp;&nbsp;&nbsp;✦</div>
+            <div class="constellation constellation-two">✧ &nbsp;·<br>&nbsp;&nbsp;&nbsp;✦</div>
+            <div class="art-caption"><span>19°18' N &nbsp; 84°48' E</span><span>THE MAKING OF THINGS</span></div>
+            <svg class="castle-art" viewBox="0 0 640 590" role="presentation" aria-hidden="true">
+              <defs>
+                <linearGradient id="stone" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0" stop-color="#343c32"/>
+                  <stop offset="1" stop-color="#1b241f"/>
+                </linearGradient>
+                <linearGradient id="forest" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0" stop-color="#26372c"/>
+                  <stop offset="1" stop-color="#111a17"/>
+                </linearGradient>
+              </defs>
+              <path d="M0 444 42 404l18 42 39-82 31 73 35-49 27 47 50-91 35 91 45-56 34 46 37-81 29 82 44-50 37 66 40-47 41 48 35-53 34 70v88H0z" fill="url(#forest)"/>
+              <g fill="#e1b976" opacity=".8">
+                <path d="m88 75 2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path d="m510 132 2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/>
+                <circle cx="185" cy="147" r="1.7"/><circle cx="466" cy="79" r="1.5"/><circle cx="558" cy="222" r="2"/><circle cx="119" cy="248" r="1.5"/>
+                <path d="m391 95 1.6 4 4 1.6-4 1.6-1.6 4-1.6-4-4-1.6 4-1.6z"/>
+              </g>
+              <g fill="url(#stone)" stroke="#59604d" stroke-width="1">
+                <path d="M184 338h278v138H184z"/>
+                <path d="M212 279h54v197h-54z"/><path d="M226 243h27v36h-27z"/><path d="m220 243 20-40 20 40z"/>
+                <path d="M289 302h49v174h-49z"/><path d="M301 263h25v39h-25z"/><path d="m296 263 18-40 18 40z"/>
+                <path d="M360 278h53v198h-53z"/><path d="M374 235h26v43h-26z"/><path d="m369 235 18-42 18 42z"/>
+                <path d="M423 318h28v158h-28z"/><path d="m422 318 15-27 15 27z"/>
+                <path d="M171 336h32v140h-32z"/><path d="m169 336 18-34 18 34z"/>
+                <path d="M190 329h267v15H190z"/><path d="M210 296h57v11h-57z"/><path d="M287 285h53v11h-53z"/><path d="M359 260h55v11h-55z"/>
+              </g>
+              <g fill="#d9b16c" opacity=".88">
+                <path d="M231 255h8v14h-8z"/><path d="M309 276h8v15h-8z"/><path d="M383 248h8v18h-8z"/>
+                <path d="M191 349h7v13h-7z"/><path d="M437 330h7v15h-7z"/><path d="M304 329h9v16h-9z"/>
+                <path d="M228 347h10v22h-10z"/><path d="M381 344h10v22h-10z"/><path d="M331 386h13v23h-13z"/>
+              </g>
+              <path d="M0 489c79-32 159-30 237 4 80-26 152-29 235 1 61-19 112-17 168 5v91H0z" fill="#121916"/>
+              <g fill="#263c30">
+                <path d="M13 493 31 424l18 69z"/><path d="M51 494 77 400l25 94z"/><path d="M96 490 114 430l18 60z"/>
+                <path d="M484 492 510 394l25 98z"/><path d="M532 492 553 424l23 68z"/><path d="M572 495 602 406l28 89z"/>
+              </g>
+              <path d="M0 509q100-32 206 2t212 0q108-27 222 0v79H0z" fill="#0d1311"/>
+            </svg>
+            <div class="art-stamp"><span>✦</span><span>BUILD<br>WITH<br>WONDER</span></div>
+          </div>
+          <a class="scroll-cue" href="#about"><span></span> SCROLL TO EXPLORE</a>
+        </section>
+
+        <section class="intro-section section-wrap" id="about">
+          <div class="section-label"><span>01</span> THE PERSON BEHIND THE PIXELS</div>
+          <div class="intro-grid">
+            <h2 class="display-title">Curiosity is<br>my favorite <em>tool.</em></h2>
+            <div class="intro-text">
+              <p>From building full-stack products to teaching thousands of students about staying safe online, I like work that makes technology a little more useful — and a lot more human.</p>
+              <p>Right now, I’m developing software and location-aware experiences with R2E Technologies at IIT Ropar. Outside work, you’ll find me exploring AI, cybersecurity, and the next idea worth bringing to life.</p>
+              <a class="inline-link" href="https://www.linkedin.com/in/ayushman-sahu-8a808a2a1" target="_blank" rel="noreferrer">More of my story on LinkedIn <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <div class="quick-facts">
+            <div><span class="fact-number">4,000<span>+</span></span><span class="fact-label">students reached</span></div>
+            <div><span class="fact-number">05</span><span class="fact-label">projects &amp; counting</span></div>
+            <div><span class="fact-number">01</span><span class="fact-label">Smart India Hackathon win</span></div>
+            <div><span class="fact-number">∞</span><span class="fact-label">things left to learn</span></div>
+          </div>
+        </section>
+
+        <section class="work-section section-wrap" id="work">
+          <div class="section-heading">
+            <div><div class="section-label"><span>02</span> A FEW CHAPTERS SO FAR</div><h2 class="display-title">Field <em>notes.</em></h2></div>
+            <p>Good work comes from getting your hands dirty, staying curious, and sharing what you learn.</p>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item current">
+              <div class="timeline-date">PRESENT</div><div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <div class="timeline-topline"><h3>Software Developer &amp; Integration</h3><span class="current-tag">CURRENT CHAPTER</span></div>
+                <p class="timeline-place">R2E Technologies Pvt. Ltd. <span>·</span> IIT Ropar</p>
+                <p>Contributing to frontend development and system integration. Collaborating on testing, debugging, and optimizing real-world software, including location tracking and performance-focused features. Also building innovative web experiences for startups and organizations to manage events and connections.</p>
+                <div class="tag-row"><span>Frontend</span><span>System integration</span><span>Location tracking</span></div>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-date">TRAINING</div><div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>Lead, Cybersecurity Club</h3><p class="timeline-place">GIET University <span>·</span> CSE Department</p>
+                <p>Leading the university’s flagship cybersecurity club. Organized workshops and hands-on sessions that brought cybersecurity concepts to more than 4,000 students; also spoke and trained to make digital safety accessible.</p>
+                <div class="tag-row"><span>Leadership</span><span>Community</span><span>Cybersecurity</span></div>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-date">2024 — 2026</div><div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>Cybersecurity Trainer</h3><p class="timeline-place">Hindu Girls College, Sonipat &amp; GIET University, Gunupur <span>·</span> AICYVERSE (OPC) Pvt. Ltd.</p>
+                <p>Delivered practical ethical-hacking and cybersecurity training, mentoring students through live demonstrations and realistic scenarios.</p>
+                <div class="tag-row"><span>Teaching</span><span>Ethical hacking</span><span>Mentoring</span></div>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-date">MAY — JUL 2025</div><div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>Cyber Physical Systems Analyst Intern</h3><p class="timeline-place">Cyberelite Taskforce <span>·</span> New Delhi</p>
+                <p>Assisted with monitoring and responding to security incidents, threat detection, vulnerability assessment, and security tooling. Practiced ethical hacking with the Kioptrix vulnerable-machine lab.</p>
+                <div class="tag-row"><span>Threat detection</span><span>Vulnerability assessment</span><span>Kioptrix</span></div>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-date">2024</div><div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>Python Intern</h3><p class="timeline-place">Software Technology Parks of India <span>·</span> Rourkela</p>
+                <p>Built Python solutions for automation and data processing. Used Pandas and NumPy to analyze data, and worked with a team to test, debug, and improve performance.</p>
+                <div class="tag-row"><span>Python</span><span>Pandas &amp; NumPy</span><span>Automation</span></div>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-date">2024</div><div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>Ethical Hacking &amp; Web Application Security Intern</h3><p class="timeline-place">Cyberyaan Training &amp; Consultancy <span>·</span> Hybrid</p>
+                <p>Learned to assess web applications against OWASP Top 10, apply secure coding and mitigation practices, and understand reconnaissance and defense through authorized training labs.</p>
+                <div class="tag-row"><span>OWASP Top 10</span><span>Web security</span><span>Secure coding</span></div>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-date">RESEARCH</div><div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>Research Contributor, AI-Driven Robotics</h3><p class="timeline-place">IIT Madras</p>
+                <p>Contributing to research exploring the possibilities of artificial intelligence and robotics.</p>
+                <div class="tag-row"><span>Artificial intelligence</span><span>Robotics</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="projects-section section-wrap" id="projects">
+          <div class="section-heading">
+            <div><div class="section-label"><span>03</span> THOUGHTS MADE TANGIBLE</div><h2 class="display-title">Things I’ve <em>made.</em></h2></div>
+            <p>Small worlds, practical tools, and a few ideas that started with “what if?”</p>
+          </div>
+          <div class="project-grid">
+            <article class="project-card project-large">
+              <div class="project-illustration illustration-rahi"><div class="map-grid"></div><span class="map-pin pin-one"></span><span class="map-pin pin-two"></span><span class="map-pin pin-three"></span><div class="map-route"></div><div class="illustration-caption">LIVE · ROAMING THE MAP</div></div>
+              <div class="project-meta"><span>01 / LOCATION &amp; DASHBOARDS</span><span>2025 — PRESENT</span></div>
+              <h3>Rahi Dashboard <span class="project-client">IIT ROPAR</span></h3>
+              <p>A real-time location-tracking dashboard with MapMyIndia integration. Built dynamic, responsive interfaces with Firebase authentication and live data synchronization.</p>
+              <div class="tag-row"><span>React</span><span>Tailwind CSS</span><span>Firebase</span><span>MapMyIndia</span></div>
+            </article>
+            <article class="project-card">
+              <div class="project-illustration illustration-avni"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="orbit-ring"></div><div class="orbit-center">a.</div><span class="floating-label label-one">STARTUPS</span><span class="floating-label label-two">MENTORSHIP</span><span class="floating-label label-three">IDEAS → IMPACT</span></div>
+              <div class="project-meta"><span>02 / AI &amp; ECOSYSTEMS</span><span>2025 — PRESENT</span></div>
+              <h3>AVNI Dashboard <span class="project-client">IIT ROPAR</span></h3>
+              <p>An AI-assisted startup ecosystem platform connecting startups, incubators, investors, and organizations. Includes profiles, events, programs, mentoring, applications, and reporting.</p>
+              <div class="tag-row"><span>React</span><span>Next.js</span><span>Tailwind CSS</span><span>Claude AI</span></div>
+            </article>
+            <article class="project-card">
+              <div class="project-illustration illustration-ocean"><div class="sun-disc"></div><div class="wave wave-one"></div><div class="wave wave-two"></div><div class="wave wave-three"></div><div class="ocean-creature">✧</div><span class="illustration-caption">THE DEEP IS FULL OF STORIES</span></div>
+              <div class="project-meta"><span>03 / GAMES &amp; EDUCATION</span><span>GAME PROJECT</span></div>
+              <h3>Ocean Literacy Game</h3>
+              <p>A cross-platform mobile game inviting players aged 12–30 to explore ocean conservation through quizzes, missions, and immersive 3D environments.</p>
+              <div class="tag-row"><span>Unity</span><span>Flutter</span><span>Flame</span><span>C# &amp; Dart</span></div>
+            </article>
+            <article class="project-card">
+              <div class="project-illustration illustration-house"><div class="house-sun"></div><div class="house-silhouette"><span></span></div><div class="price-chip">₹ &nbsp;↗</div><div class="chart-line"></div><span class="illustration-caption">A FAIRER ESTIMATE, BUILT ON DATA</span></div>
+              <div class="project-meta"><span>04 / MACHINE LEARNING</span><span>ACADEMIC PROJECT</span></div>
+              <h3>House Price Prediction</h3>
+              <p>A machine-learning web application that uses location-based factors to predict house prices and make useful, more transparent pricing insights accessible.</p>
+              <div class="tag-row"><span>Python</span><span>Scikit-learn</span><span>SQLite</span></div>
+            </article>
+            <article class="project-card">
+              <div class="project-illustration illustration-waste"><div class="waste-sun"></div><div class="waste-building building-one"></div><div class="waste-building building-two"></div><div class="waste-truck"><span></span></div><div class="waste-route"></div><span class="illustration-caption">A CLEANER CITY, BY DESIGN</span></div>
+              <div class="project-meta"><span>05 / CIVIC TECHNOLOGY</span><span>ACADEMIC PROJECT</span></div>
+              <h3>Waste Management Portal</h3>
+              <p>A responsive system for collection, tracking, and disposal management, designed around the needs of municipalities, collectors, and citizens.</p>
+              <div class="tag-row"><span>HTML &amp; CSS</span><span>MySQL</span><span>Responsive design</span></div>
+            </article>
+          </div>
+          <p class="project-note"><span>✦</span> Thoughtfully built, always learning. More chapters are on their way.</p>
+        </section>
+
+        <section class="skills-section section-wrap" id="skills">
+          <div class="skills-heading"><div class="section-label"><span>04</span> WHAT’S IN THE TOOLKIT</div><h2 class="display-title">My little <em>spellbook.</em></h2><p>The right tool for the right problem — and always another one worth learning.</p></div>
+          <div class="skills-grid">
+            <article class="skill-card"><div class="skill-icon">&lt;/&gt;</div><h3>Languages</h3><p>Python · C · JavaScript</p><div class="skill-stars" aria-label="Curiosity level: always growing">✦ ✦ ✦</div></article>
+            <article class="skill-card"><div class="skill-icon">⌘</div><h3>Frontend craft</h3><p>HTML · CSS · React.js · Tailwind CSS</p><div class="skill-stars" aria-label="Curiosity level: always growing">✦ ✦ ✦</div></article>
+            <article class="skill-card"><div class="skill-icon">◈</div><h3>Backend &amp; data</h3><p>Node.js · MySQL · SQLite · Firebase</p><div class="skill-stars" aria-label="Curiosity level: always growing">✦ ✦ ✦</div></article>
+            <article class="skill-card"><div class="skill-icon">◎</div><h3>Build &amp; play</h3><p>Flask · Unity · Flutter · Flame · Scikit-learn</p><div class="skill-stars" aria-label="Curiosity level: always growing">✦ ✦ ✦</div></article>
+            <article class="skill-card"><div class="skill-icon">⌁</div><h3>Cybersecurity</h3><p>Ethical hacking · Kali Linux · OSINT · VAPT · Kioptrix labs</p><div class="skill-stars" aria-label="Curiosity level: always growing">✦ ✦ ✦</div></article>
+            <article class="skill-card"><div class="skill-icon">⟡</div><h3>Data &amp; discovery</h3><p>Data analysis · Visualization · Pandas · NumPy · Matplotlib · Google Colab · ML basics</p><div class="skill-stars" aria-label="Curiosity level: always growing">✦ ✦ ✦</div></article>
+          </div>
+          <div class="learning-strip"><span>ALWAYS LEARNING</span><i></i><span>AI &amp; GENERATIVE AI</span><i></i><span>DATA SCIENCE</span><i></i><span>SECURE SOFTWARE</span><i></i><span>LOCATION TECH</span></div>
+        </section>
+
+        <section class="education-section section-wrap" id="education">
+          <div class="education-main">
+            <div class="section-label"><span>05</span> THE CLASSROOM YEARS</div>
+            <h2 class="display-title">Foundations<br>for <em>what’s next.</em></h2>
+            <div class="education-list">
+              <article class="education-item"><span class="education-year">2022 — 2026</span><div><h3>B.Tech. · Computer Science &amp; Engineering</h3><p>GIET University <span>·</span> Gunupur, Odisha</p></div><strong>7.5</strong></article>
+              <article class="education-item"><span class="education-year">2019 — 2021</span><div><h3>Higher Secondary · Classes 11–12</h3><p>Khalikote University <span>·</span> Brahmapur, Odisha</p></div><strong>8.2</strong></article>
+              <article class="education-item"><span class="education-year">2018 — 2019</span><div><h3>Secondary School · Class 10</h3><p>K.C. Public School <span>·</span> Brahmapur, Odisha</p></div><strong>8.32</strong></article>
+            </div>
+            <p class="grade-note">Academic results as provided · CGPA / score scale not specified</p>
+          </div>
+          <aside class="education-aside">
+            <div class="aside-sparkle">✳</div><div class="section-label">A FEW BRIGHT MOMENTS</div>
+            <article class="award"><span>🏆</span><div><h3>University-level winner</h3><p>Smart India Hackathon 2023</p></div></article>
+            <article class="award"><span>🎖</span><div><h3>Cybersecurity campaign &amp; museum</h3><p>Recognized by the Collector &amp; SP, GIET University</p></div></article>
+            <article class="award"><span>🏅</span><div><h3>LeetCode DCC badges</h3><p>October 2024 — August 2025</p></div></article>
+            <div class="aside-divider"></div>
+            <p class="aside-note">Cybersecurity bootcamp at IIIT Bhubaneswar. Research curiosity at IIT Madras. Plenty of open tabs, always.</p>
+          </aside>
+        </section>
+
+        <section class="cert-section section-wrap" aria-labelledby="cert-heading">
+          <div class="section-label"><span>06</span> FIELD GUIDE, MANY MARGINS</div>
+          <div class="cert-heading-row"><h2 class="display-title" id="cert-heading">Things I’ve <em>learned.</em></h2><span class="cert-count">A COLLECTION OF COURSES &amp; CERTIFICATIONS</span></div>
+          <div class="cert-cloud">
+            <span>Foundation to Cybersecurity <small>Google</small></span><span>Data Analytics <small>Accenture</small></span>
+            <span>Advanced Software Engineering <small>Walmart Global Tech</small></span><span>Cybersecurity Analyst &amp; Data Visualization <small>TCS</small></span>
+            <span>Generative AI &amp; Google Analytics <small>Google</small></span><span>Joy of Computing with Python <small>NPTEL</small></span>
+            <span>Solution Architecture Essentials <small>AWS</small></span><span>Cyber Threat Intelligence 101 <small>Certified</small></span>
+            <span>Cybersecurity &amp; Crypt Analysis Bootcamp <small>IIIT Bhubaneswar</small></span><span>Linux, OSINT &amp; Computer Networks <small>Udemy</small></span>
+            <span>Introduction to Quantum Computing <small>Udemy</small></span>
+          </div>
+        </section>
+
+        <section class="contact-section section-wrap" id="contact">
+          <div class="contact-card">
+            <div class="contact-stars" aria-hidden="true">✦ &nbsp; · &nbsp; ✧ &nbsp; · &nbsp; ✦</div>
+            <div class="section-label"><span>07</span> YOUR NEXT CHAPTER COULD START HERE</div>
+            <h2 class="display-title">Have a good<br>idea? <em>Let’s talk.</em></h2>
+            <p>I’m always up for a thoughtful conversation, a useful collaboration, or a suitably ambitious side quest.</p>
+            <a class="button button-gold" href="mailto:sahuayushman679@gmail.com">sahuayushman679@gmail.com <span aria-hidden="true">↗</span></a>
+            <a class="contact-linkedin" href="https://www.linkedin.com/in/ayushman-sahu-8a808a2a1" target="_blank" rel="noreferrer">OR FIND ME ON LINKEDIN <span aria-hidden="true">↗</span></a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <a class="wordmark footer-mark" href="#home"><span class="wordmark-seal" aria-hidden="true">A</span><span>AYUSHMAN <span class="wordmark-light">SAHU</span></span></a>
+        <div class="footer-languages"><span>ALSO SPEAKING</span><span>English</span><span>Hindi</span><span>Odia</span></div>
+        <div class="footer-right"><span>Made with curiosity in Brahmapur, Odisha</span><a href="#home">BACK TO THE TOP ↑</a></div>
+      </footer>
+    </div>
+  </body>
+</html>
