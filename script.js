@@ -3,7 +3,7 @@ const navigation = document.querySelector("#primary-navigation");
 const flyingWizard = document.querySelector(".flying-wizard");
 const pageProgress = document.querySelector(".page-progress span");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-const chapterSections = [...document.querySelectorAll("main > section")];
+const chapterSections = [...document.querySelectorAll("main > section:not(.secret-chapter)")];
 const chapterCount = document.querySelector(".chapter-hud-count");
 const chapterName = document.querySelector(".chapter-hud-name");
 const chapterTrack = document.querySelector(".chapter-hud-track > span");
@@ -200,3 +200,188 @@ if (flyingWizard) {
     startFlight();
   }
 }
+
+/* Additional wand magic, adapted to this portfolio's existing section classes. */
+(() => {
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const body = document.body;
+
+  // Sparkle trail: the existing SVG wand stays the only cursor.
+  if (finePointer && !reducedMotion.matches) {
+    const canvas = document.createElement("canvas");
+    canvas.id = "spark-canvas";
+    canvas.setAttribute("aria-hidden", "true");
+    body.appendChild(canvas);
+    const context = canvas.getContext("2d");
+    const sparks = [];
+    const resizeCanvas = () => {
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+      canvas.width = Math.round(window.innerWidth * pixelRatio);
+      canvas.height = Math.round(window.innerHeight * pixelRatio);
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    };
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas, { passive: true });
+    window.addEventListener("pointermove", (event) => {
+      for (let i = 0; i < 2 && sparks.length < 90; i += 1) {
+        sparks.push({
+          x: event.clientX, y: event.clientY,
+          vx: (Math.random() - 0.5) * 1.2,
+          vy: Math.random() * 1.1 + 0.25,
+          life: 1, radius: Math.random() * 2 + 0.8,
+        });
+      }
+    }, { passive: true });
+
+    const drawSparks = () => {
+      context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      for (let i = sparks.length - 1; i >= 0; i -= 1) {
+        const spark = sparks[i];
+        spark.x += spark.vx;
+        spark.y += spark.vy;
+        spark.life -= 0.026;
+        if (spark.life <= 0) {
+          sparks.splice(i, 1);
+          continue;
+        }
+        context.beginPath();
+        context.arc(spark.x, spark.y, spark.radius * spark.life, 0, Math.PI * 2);
+        context.fillStyle = `rgba(255, 228, 150, ${spark.life})`;
+        context.shadowColor = "#ffcf7a";
+        context.shadowBlur = 8;
+        context.fill();
+      }
+      window.requestAnimationFrame(drawSparks);
+    };
+    window.requestAnimationFrame(drawSparks);
+  }
+
+  // Lumos/Nox uses the pointer position on desktop and the last touch point on mobile.
+  const veil = document.createElement("div");
+  veil.id = "nox-veil";
+  veil.setAttribute("aria-hidden", "true");
+  body.appendChild(veil);
+  window.addEventListener("pointermove", (event) => {
+    veil.style.setProperty("--magic-x", `${event.clientX}px`);
+    veil.style.setProperty("--magic-y", `${event.clientY}px`);
+  }, { passive: true });
+
+  const toggle = document.createElement("button");
+  toggle.className = "lumos-toggle";
+  toggle.type = "button";
+  const syncLumos = () => {
+    const isNox = body.classList.contains("nox");
+    toggle.textContent = isNox ? "✦ Lumos" : "☾ Nox";
+    toggle.setAttribute("aria-label", isNox ? "Turn on Lumos and light the page" : "Turn on Nox and dim the page");
+    toggle.setAttribute("aria-pressed", String(isNox));
+  };
+  toggle.addEventListener("click", () => {
+    body.classList.toggle("nox");
+    syncLumos();
+  });
+  syncLumos();
+  body.appendChild(toggle);
+
+  // Floating candles stay behind hero content and never intercept clicks.
+  const hero = document.querySelector("#home");
+  if (hero && !reducedMotion.matches) {
+    const candleWrap = document.createElement("div");
+    candleWrap.className = "candles";
+    candleWrap.setAttribute("aria-hidden", "true");
+    const count = window.innerWidth < 700 ? 5 : 11;
+    for (let i = 0; i < count; i += 1) {
+      const candle = document.createElement("span");
+      candle.className = "candle";
+      candle.style.left = `${Math.random() * 95}%`;
+      candle.style.top = `${Math.random() * 42 + 5}%`;
+      candle.style.setProperty("--candle-duration", `${5 + Math.random() * 5}s`);
+      candle.style.animationDelay = `${-Math.random() * 6}s`;
+      candle.style.scale = String(0.6 + Math.random() * 0.6);
+      candleWrap.appendChild(candle);
+    }
+    hero.prepend(candleWrap);
+  }
+
+  // Ink reveal applies to the existing section title class as it enters view.
+  if ("IntersectionObserver" in window) {
+    const headings = document.querySelectorAll("main section h2");
+    const inkObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-written");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.35 });
+    headings.forEach((heading) => {
+      heading.classList.add("ink-reveal");
+      if (heading.closest(".secret-chapter")?.getAttribute("aria-hidden") !== "true") inkObserver.observe(heading);
+    });
+  }
+
+  // Actual skill markup is .skill-card; the timeline is .timeline inside #work.
+  document.querySelectorAll("#skills .skill-card").forEach((card) => card.classList.add("spell-card"));
+  const timeline = document.querySelector("#work .timeline");
+  if (timeline && !reducedMotion.matches) {
+    const footprints = document.createElement("div");
+    footprints.className = "footprints";
+    footprints.setAttribute("aria-hidden", "true");
+    for (let i = 0; i < 14; i += 1) {
+      const footprint = document.createElement("span");
+      footprint.className = "footprint";
+      footprint.style.top = `${i * 7}%`;
+      footprint.style.left = i % 2 ? "18px" : "4px";
+      footprint.style.transform = `rotate(${i % 2 ? 8 : -8}deg)`;
+      footprint.style.animationDelay = `${i * 0.28}s`;
+      footprints.appendChild(footprint);
+    }
+    timeline.appendChild(footprints);
+  }
+
+  document.querySelectorAll('#contact a[href^="mailto:"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      if (reducedMotion.matches) return;
+      const letter = document.createElement("div");
+      letter.className = "owl-letter";
+      letter.setAttribute("aria-hidden", "true");
+      letter.style.left = `${event.clientX || window.innerWidth / 2}px`;
+      letter.style.top = `${event.clientY || window.innerHeight * 0.7}px`;
+      body.appendChild(letter);
+      window.setTimeout(() => letter.remove(), 1700);
+    });
+  });
+
+  const secretChapter = document.querySelector(".secret-chapter");
+  const spells = {
+    lumos: () => { body.classList.remove("nox"); syncLumos(); },
+    nox: () => { body.classList.add("nox"); syncLumos(); },
+    accio: () => document.querySelector("#projects")?.scrollIntoView({ behavior: reducedMotion.matches ? "auto" : "smooth" }),
+    alohomora: () => {
+      if (!secretChapter) return;
+      secretChapter.setAttribute("aria-hidden", "false");
+      body.classList.add("alohomora");
+      const heading = secretChapter.querySelector("h2");
+      if (heading && "IntersectionObserver" in window) heading.classList.add("is-written");
+    },
+  };
+  let typed = "";
+  window.addEventListener("keydown", (event) => {
+    if (event.target instanceof Element && event.target.closest("input, textarea, select, [contenteditable='true']")) return;
+    if (event.key.length !== 1 || !/[a-z]/i.test(event.key)) return;
+    typed = (typed + event.key.toLowerCase()).slice(-12);
+    for (const word of Object.keys(spells)) {
+      if (!typed.endsWith(word)) continue;
+      spells[word]();
+      const toast = document.createElement("div");
+      toast.className = "spell-toast";
+      toast.setAttribute("role", "status");
+      toast.textContent = `${word[0].toUpperCase()}${word.slice(1)}!`;
+      body.appendChild(toast);
+      window.setTimeout(() => toast.remove(), 2300);
+      typed = "";
+      break;
+    }
+  });
+})();

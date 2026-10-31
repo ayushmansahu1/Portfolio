@@ -512,3 +512,132 @@ body { background: #080709; }
   .shooting-star-path, .shooting-star-core, .lake-ripple, .castle-mist,
   .shooting-star-html { animation: none !important; }
 }
+
+/* Supplemental effects from magic.css, tuned for the portfolio's existing layout. */
+#spark-canvas { position: fixed; inset: 0; z-index: 8; pointer-events: none; }
+#nox-veil {
+  position: fixed;
+  z-index: 7;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle 220px at var(--magic-x, 50%) var(--magic-y, 40%), transparent 0%, rgba(5, 6, 4, .48) 58%, rgba(5, 6, 4, .82) 100%);
+  transition: opacity .7s ease;
+}
+body.nox #nox-veil { opacity: 1; }
+.lumos-toggle {
+  position: fixed;
+  z-index: 10;
+  right: 22px;
+  bottom: 22px;
+  padding: 10px 15px;
+  border: 1px solid rgba(211, 174, 112, .5);
+  border-radius: 999px;
+  background: rgba(16, 19, 15, .9);
+  color: var(--gold-light);
+  font: 600 11px var(--sans);
+  letter-spacing: .5px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, .3);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+}
+.lumos-toggle:hover { background: rgba(211, 174, 112, .17); }
+.lumos-toggle:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+.candles { position: absolute; z-index: 1; inset: 0; overflow: hidden; pointer-events: none; }
+.candle {
+  position: absolute;
+  width: 10px;
+  height: 42px;
+  border: 1px solid rgba(102, 79, 49, .5);
+  border-radius: 3px 3px 2px 2px;
+  background: linear-gradient(90deg, #d3c19c, #fff1d1 42%, #d7c6a4);
+  box-shadow: 0 0 24px rgba(255, 207, 122, .12);
+  animation: candle-drift var(--candle-duration, 7s) ease-in-out infinite alternate;
+}
+.candle::before {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 8px;
+  height: 13px;
+  border-radius: 50% 50% 45% 45%;
+  background: radial-gradient(circle at 50% 70%, #fff 0 18%, #ffcf7a 48%, #ff9a3c 82%);
+  box-shadow: 0 0 16px 5px rgba(255, 190, 90, .42);
+  content: "";
+  transform: translateX(-50%);
+  animation: candle-flicker .2s ease-in-out infinite alternate;
+}
+@keyframes candle-drift { to { transform: translateY(-16px) rotate(1deg); } }
+@keyframes candle-flicker { to { opacity: .82; transform: translateX(-52%) scale(.9, 1.1); } }
+.ink-reveal {
+  clip-path: inset(0 100% 0 0);
+  filter: blur(3px);
+  transition: clip-path 1.25s cubic-bezier(.6, .05, .3, 1), filter 1.25s ease;
+}
+.ink-reveal.is-written { clip-path: inset(0); filter: blur(0); }
+.spell-card { transform-style: preserve-3d; transform-origin: left center; }
+.footprints { position: absolute; z-index: 0; inset: 0 auto 0 0; width: 40px; pointer-events: none; }
+.footprint {
+  position: absolute;
+  width: 9px;
+  height: 14px;
+  border-radius: 50% 50% 45% 45%;
+  background: var(--gold-light);
+  opacity: 0;
+  animation: footprint-step 4s linear infinite;
+}
+@keyframes footprint-step { 10% { opacity: .65; } 60% { opacity: .22; } 100% { opacity: 0; } }
+.owl-letter {
+  position: fixed;
+  z-index: 11;
+  width: 64px;
+  height: 44px;
+  border-radius: 3px;
+  background: #e9dcc0;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .38);
+  pointer-events: none;
+  animation: owl-post-flight 1.6s cubic-bezier(.5, 0, .7, .4) forwards;
+}
+.owl-letter::after { position: absolute; top: 50%; left: 50%; width: 14px; height: 14px; border-radius: 50%; background: #8b1e1e; content: ""; transform: translate(-50%, -50%); }
+@keyframes owl-post-flight { to { transform: translate(38vw, -48vh) rotate(25deg) scale(.3); opacity: 0; } }
+.spell-toast {
+  position: fixed;
+  z-index: 12;
+  top: 24px;
+  left: 50%;
+  padding: 9px 18px;
+  border: 1px solid rgba(211, 174, 112, .4);
+  border-radius: 999px;
+  background: rgba(17, 19, 15, .94);
+  color: var(--gold-light);
+  font: italic 15px var(--serif);
+  transform: translateX(-50%);
+  animation: spell-toast-in 2.3s ease both;
+}
+@keyframes spell-toast-in { 0%, 100% { opacity: 0; translate: 0 -8px; } 15%, 80% { opacity: 1; translate: 0 0; } }
+.secret-chapter { display: none; }
+body.alohomora .secret-chapter { display: block; animation: secret-open .8s ease both; }
+.secret-chapter-card {
+  position: relative;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: clamp(34px, 7vw, 76px);
+  border: 1px solid rgba(211, 174, 112, .25);
+  background: radial-gradient(ellipse at 90% 10%, rgba(141, 99, 65, .16), transparent 48%), #141411;
+}
+.secret-chapter-card p { max-width: 620px; color: var(--muted); line-height: 1.8; }
+@keyframes secret-open { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 760px) {
+  .lumos-toggle { right: auto; bottom: 18px; left: 16px; }
+  .spell-card:hover, .spell-card:focus-within { transform: none; }
+  .footprints { left: -7px; }
+  .candle { height: 32px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #nox-veil, .lumos-toggle { transition: none; }
+  .candle, .candle::before, .footprint, .owl-letter, .spell-toast,
+  body.alohomora .secret-chapter { animation: none !important; }
+  .ink-reveal { clip-path: none; filter: none; transition: none; }
+  .spell-card { transition: none; }
+  #spark-canvas, .footprints { display: none; }
+}
