@@ -25,7 +25,7 @@ button { font: inherit; }
 .page-progress span { display: block; width: 100%; height: 100%; background: linear-gradient(90deg, #a87450, var(--gold-light)); transform: scaleX(var(--scroll-progress, 0)); transform-origin: left center; }
 .reveal-ready { opacity: 0; transform: translateY(19px); transition: opacity .65s ease, transform .65s cubic-bezier(.2, .7, .2, 1); }
 .reveal-ready.is-revealed { opacity: 1; transform: translateY(0); }
-.flying-wizard { position: fixed; z-index: 3; top: 0; left: 0; width: clamp(170px, 19vw, 245px); pointer-events: none; opacity: 0; transform: translate3d(var(--flight-x, -200px), var(--flight-y, 0), 0) scaleX(var(--flight-direction, 1)) rotate(var(--flight-tilt, 0deg)); transform-origin: center; filter: drop-shadow(0 0 13px rgba(211, 174, 112, .27)); will-change: transform; transition: opacity .65s ease; }
+.flying-wizard { position: fixed; z-index: 0; top: 0; left: 0; width: clamp(220px, 24vw, 320px); pointer-events: none; opacity: 0; transform: translate3d(var(--flight-x, -200px), var(--flight-y, 0), 0) scaleX(var(--flight-direction, 1)) rotate(var(--flight-tilt, 0deg)); transform-origin: center; filter: drop-shadow(0 0 13px rgba(211, 174, 112, .27)); will-change: transform; transition: opacity .65s ease; }
 .flying-wizard.is-visible { opacity: .94; }
 .flying-wizard svg { display: block; width: 100%; height: auto; overflow: visible; }
 .flight-trail { opacity: .72; }
@@ -248,7 +248,7 @@ button { font: inherit; }
 }
 @media (max-width: 760px) {
   html { scroll-padding-top: 65px; }
-  .flying-wizard { width: 165px; }
+  .flying-wizard { width: 190px; }
   .site-header { height: 68px; padding: 0 6%; }
   .menu-toggle { display: flex; flex-direction: column; gap: 5px; padding: 9px 5px; border: 0; background: transparent; cursor: pointer; }
   .menu-toggle > span:not(.visually-hidden) { width: 22px; height: 1px; background: var(--gold-light); transition: transform .2s, opacity .2s; }
@@ -321,7 +321,7 @@ button { font: inherit; }
   .footer-right { font-size: 7px; }
 }
 @media (max-width: 390px) {
-  .flying-wizard { width: 145px; }
+  .flying-wizard { width: 165px; }
   .hero { min-height: 680px; }
   .hero-location { gap: 6px; font-size: 9px; }
   .timeline-item { grid-template-columns: 61px 12px 1fr; column-gap: 9px; }
