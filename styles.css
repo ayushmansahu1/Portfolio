@@ -437,12 +437,78 @@ body { background: #080709; }
 .project-live > span { color: var(--gold-light); font-size: 13px; }
 .project-live:hover { border-color: rgba(241, 216, 163, .75); background: rgba(211, 174, 112, .09); color: #fff0d2; }
 .project-live:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+/* Full-bleed, animated Hogwarts-inspired opening scene */
+.hero {
+  min-height: min(940px, max(740px, calc(100svh - 78px)));
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom: 76px;
+  background: #080b0b;
+}
+.hero::before {
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(9, 10, 11, .98) 0%, rgba(9, 10, 11, .91) 25%, rgba(9, 10, 11, .62) 43%, rgba(9, 10, 11, .13) 72%, rgba(9, 10, 11, .16) 100%), linear-gradient(0deg, #0b0d0c 0%, transparent 20%, transparent 78%, rgba(8, 9, 10, .38) 100%);
+}
+.hero::after { z-index: 1; background: none; border-color: rgba(233, 220, 186, .07); }
+.hero-copy { z-index: 2; width: min(590px, 53%); padding-bottom: 14px; }
+.hero-art { position: absolute; z-index: 0; inset: 0; min-height: 0; margin: 0; overflow: hidden; filter: saturate(.9) contrast(1.08); }
+.hero-art::before { inset: 0; background: radial-gradient(ellipse at 73% 43%, rgba(189, 144, 87, .12), transparent 46%), linear-gradient(0deg, rgba(8, 11, 10, .58) 0%, transparent 25%, transparent 88%, rgba(8, 9, 10, .28) 100%); }
+.castle-art { position: absolute; z-index: 0; inset: -3% -6% -2% -3%; width: 112%; height: 108%; filter: drop-shadow(0 0 30px rgba(211, 174, 112, .11)); animation: castle-breathe 12s ease-in-out infinite alternate; }
+.art-glow { z-index: 0; width: min(52vw, 700px); height: min(52vw, 700px); top: 7%; left: 49%; background: radial-gradient(circle, rgba(208, 171, 111, .2), rgba(145, 113, 74, .08) 38%, transparent 72%); animation: hearth-glow 8s ease-in-out infinite alternate; }
+.moon { z-index: 1; top: 11%; left: 73%; width: clamp(58px, 7vw, 92px); height: clamp(58px, 7vw, 92px); background: #f1dfb5; box-shadow: 0 0 48px rgba(241, 223, 181, .32), 0 0 150px rgba(219, 194, 146, .18); }
+.moon::after { background: #121619; }
+.constellation-one { top: 28%; left: 59%; }
+.constellation-two { top: 18%; right: 8%; }
+.art-caption { bottom: 61px; right: 5%; color: rgba(233, 219, 188, .7); }
+.art-stamp { top: 24%; right: 7%; }
+.scroll-cue { z-index: 3; }
+.castle-cloud { transform-box: fill-box; transform-origin: center; animation: cloud-drift 62s ease-in-out infinite alternate; }
+.cloud-two { animation-duration: 83s; animation-direction: alternate-reverse; }
+.castle-windows { transform-box: fill-box; transform-origin: center; animation: window-flicker 6s steps(5, end) infinite; }
+.castle-stars { transform-box: fill-box; transform-origin: center; animation: star-shimmer 6s ease-in-out infinite alternate; }
+.shooting-star-path, .shooting-star-core { animation: svg-comet 9s ease-in-out infinite; }
+.shooting-star-core { transform-box: fill-box; transform-origin: center; }
+.lake-ripple { transform-box: fill-box; transform-origin: center; animation: lake-shift 18s ease-in-out infinite alternate; }
+.ripple-two { animation-duration: 24s; animation-direction: alternate-reverse; }
+.ripple-three { animation-duration: 29s; }
+.castle-mist { position: absolute; z-index: 1; left: -18%; width: 136%; height: 170px; border-radius: 50%; pointer-events: none; background: radial-gradient(ellipse at 50% 50%, rgba(168, 177, 154, .15), rgba(131, 149, 135, .07) 36%, transparent 70%); filter: blur(18px); }
+.mist-one { bottom: 11%; animation: mist-drift 32s ease-in-out infinite alternate; }
+.mist-two { bottom: 4%; opacity: .6; animation: mist-drift 43s ease-in-out infinite alternate-reverse; }
+.shooting-star-html { position: absolute; z-index: 1; top: 20%; left: 48%; width: 150px; height: 2px; opacity: 0; transform: rotate(-28deg); transform-origin: right center; background: linear-gradient(90deg, transparent, rgba(255, 241, 199, .9)); filter: drop-shadow(0 0 5px #e4c47e); animation: meteor-cross 9s linear 2s infinite; pointer-events: none; }
+.shooting-star-html::after { content: ""; position: absolute; right: -2px; top: -2px; width: 5px; height: 5px; border-radius: 50%; background: #fff4cf; box-shadow: 0 0 12px 3px rgba(255, 219, 145, .8); }
+@keyframes castle-breathe { from { transform: translate3d(-.3%, .15%, 0) scale(1); } to { transform: translate3d(.35%, -.25%, 0) scale(1.025); } }
+@keyframes hearth-glow { from { opacity: .55; transform: scale(.92); } to { opacity: 1; transform: scale(1.08); } }
+@keyframes cloud-drift { from { transform: translateX(-3.5%); } to { transform: translateX(4%); } }
+@keyframes window-flicker { 0%, 100% { opacity: .86; } 25% { opacity: 1; } 48% { opacity: .72; } 68% { opacity: .95; } 82% { opacity: .79; } }
+@keyframes star-shimmer { from { opacity: .48; } to { opacity: .98; } }
+@keyframes svg-comet { 0%, 69%, 100% { opacity: 0; } 72% { opacity: .9; } 78% { opacity: .35; } 83% { opacity: 0; } }
+@keyframes lake-shift { from { transform: translateX(-1.5%); } to { transform: translateX(1.5%); } }
+@keyframes mist-drift { from { transform: translateX(-5%) translateY(7px); opacity: .35; } to { transform: translateX(5%) translateY(-8px); opacity: .8; } }
+@keyframes meteor-cross { 0%, 42%, 100% { opacity: 0; transform: translate3d(20vw, -6vh, 0) rotate(-28deg); } 44% { opacity: .9; } 51% { opacity: 0; transform: translate3d(-22vw, 10vh, 0) rotate(-28deg); } }
 @media (min-width: 761px) {
   .projects-section.section-wrap { padding-right: clamp(26px, 3.5vw, 58px); padding-left: clamp(26px, 3.5vw, 58px); }
   .project-grid { column-gap: 22px; }
   .project-grid .project-illustration { height: 300px; }
 }
 @media (max-width: 760px) {
+  .hero { min-height: 850px; align-content: start; padding: 56px 7% 0; }
+  .hero::before { background: linear-gradient(180deg, rgba(9, 10, 11, .94) 0%, rgba(9, 10, 11, .84) 31%, rgba(9, 10, 11, .18) 58%, rgba(9, 10, 11, .25) 100%); }
+  .hero-copy { width: min(100%, 500px); padding-bottom: 0; }
+  .hero-art { top: 300px; right: 0; bottom: 0; left: 0; height: auto; }
+  .hero-art::before { background: linear-gradient(180deg, rgba(9, 10, 11, .12), transparent 28%, rgba(8, 11, 10, .16) 70%, rgba(8, 11, 10, .7)); }
+  .castle-art { inset: 0 -28% -5% -28%; width: 156%; height: 110%; }
+  .moon { top: 7%; left: 73%; }
+  .art-glow { top: 8%; left: 42%; width: 80vw; height: 80vw; }
+  .art-caption { right: 7%; bottom: 34px; }
+  .shooting-star-html { top: 16%; left: 30%; }
   .project-grid .project-illustration { height: 245px; }
   .project-large .project-illustration { height: 245px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .castle-art, .art-glow, .castle-cloud, .castle-windows, .castle-stars,
+  .shooting-star-path, .shooting-star-core, .lake-ripple, .castle-mist,
+  .shooting-star-html { animation: none !important; }
 }

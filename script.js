@@ -131,8 +131,9 @@ if (flyingWizard) {
     const cycle = ((timestamp + window.scrollY * 4.5) % 20000) / 20000;
     const progress = cycle < 0.5 ? cycle * 2 : (1 - cycle) * 2;
     const width = flyingWizard.getBoundingClientRect().width;
-    const x = -width + progress * (window.innerWidth + width);
-    const y = window.innerHeight * (0.1 + (Math.sin(timestamp / 2300 + window.scrollY / 410) + 1) * 0.15);
+    const startX = Math.max(24, window.innerWidth * (window.innerWidth < 760 ? 0.2 : 0.39)) - width;
+    const x = startX + progress * (window.innerWidth - startX + width * 0.35);
+    const y = window.innerHeight * (0.06 + (Math.sin(timestamp / 2300 + window.scrollY / 410) + 1) * 0.09);
     const delta = timestamp - previousTime;
     const verticalSpeed = delta > 0 ? (y - previousY) / delta : 0;
 
