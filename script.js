@@ -13,6 +13,38 @@ const pointerRoot = document.documentElement;
 const chapterNames = ["The arrival", "The story", "Field notes", "Creations", "Spellbook", "Foundations", "Field guide", "Owl post"];
 let activeChapter = 0;
 
+const themeToggle = document.querySelector(".theme-toggle");
+const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+const themeRoot = document.documentElement;
+const storedTheme = (() => {
+  try { return window.localStorage.getItem("ayushman-portfolio-theme"); }
+  catch { return null; }
+})();
+const initialTheme = storedTheme === "light" || storedTheme === "dark"
+  ? storedTheme
+  : (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+
+const setTheme = (theme, persist = false) => {
+  themeRoot.dataset.theme = theme;
+  if (themeColorMeta) themeColorMeta.setAttribute("content", theme === "light" ? "#f4f0e6" : "#11130f");
+  if (themeToggle) {
+    const isLight = theme === "light";
+    themeToggle.textContent = isLight ? "☾" : "☼";
+    themeToggle.setAttribute("aria-label", isLight ? "Switch to dark color theme" : "Switch to light color theme");
+    themeToggle.setAttribute("aria-pressed", String(isLight));
+    themeToggle.title = isLight ? "Switch to dark theme" : "Switch to light theme";
+  }
+  if (persist) {
+    try { window.localStorage.setItem("ayushman-portfolio-theme", theme); }
+    catch { /* Theme remains usable for this page view when storage is unavailable. */ }
+  }
+};
+
+setTheme(initialTheme);
+themeToggle?.addEventListener("click", () => {
+  setTheme(themeRoot.dataset.theme === "light" ? "dark" : "light", true);
+});
+
 if (menuToggle && navigation) {
   menuToggle.addEventListener("click", () => {
     const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
