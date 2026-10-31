@@ -16,6 +16,26 @@
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="page-progress" aria-hidden="true"><span></span></div>
     <div class="magic-cursor" aria-hidden="true"></div>
+    <svg class="wand-pointer" viewBox="0 0 100 26" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="wand-wood" x1="0" x2="1" y1="1" y2="0">
+          <stop offset="0" stop-color="#211611"/>
+          <stop offset=".42" stop-color="#754127"/>
+          <stop offset=".78" stop-color="#b8733f"/>
+          <stop offset="1" stop-color="#f2cc83"/>
+        </linearGradient>
+        <filter id="wand-spark" x="-100%" y="-100%" width="300%" height="300%">
+          <feGaussianBlur stdDeviation="2" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <path d="M3 19C25 18 45 16 64 13 80 10 91 8 98 8L98 16C87 15 77 15 64 16 44 18 24 22 4 23Z" fill="url(#wand-wood)" stroke="#d4a267" stroke-width=".8"/>
+      <path d="M7 20C34 18 66 14 96 11" fill="none" stroke="#f0c987" stroke-width="1" opacity=".8"/>
+      <path d="m29 17 2 5m4-6 2 5m28-10 2 5" fill="none" stroke="#db6946" stroke-width="2.2"/>
+      <path d="m39 16 2 4m28-9 2 4" fill="none" stroke="#f1c36e" stroke-width=".8"/>
+      <circle cx="98" cy="12" r="2.2" fill="#fff0bd" filter="url(#wand-spark)"/>
+      <path d="m87 3 1.2 3.2L91 7.5l-2.8 1.2L87 12l-1.2-3.3L83 7.5l2.8-1.3z" fill="#f0d399" opacity=".85"/>
+    </svg>
     <aside class="chapter-hud" aria-label="Page progress">
       <span class="chapter-hud-label">CURRENT CHAPTER</span>
       <div class="chapter-hud-row">

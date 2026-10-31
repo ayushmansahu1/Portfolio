@@ -9,6 +9,7 @@ const chapterName = document.querySelector(".chapter-hud-name");
 const chapterTrack = document.querySelector(".chapter-hud-track > span");
 const chapterNext = document.querySelector(".chapter-next");
 const magicCursor = document.querySelector(".magic-cursor");
+const pointerRoot = document.documentElement;
 const chapterNames = ["The arrival", "The story", "Field notes", "Creations", "Spellbook", "Foundations", "Field guide", "Owl post"];
 let activeChapter = 0;
 
@@ -59,20 +60,24 @@ if (chapterSections.length) {
   });
 }
 
-if (magicCursor && !reducedMotion.matches && !window.matchMedia("(pointer: coarse)").matches) {
+if (magicCursor && !window.matchMedia("(pointer: coarse)").matches) {
   window.addEventListener("pointermove", (event) => {
-    magicCursor.style.setProperty("--pointer-x", `${event.clientX}px`);
-    magicCursor.style.setProperty("--pointer-y", `${event.clientY}px`);
-    magicCursor.classList.add("is-visible");
+    pointerRoot.style.setProperty("--pointer-x", `${event.clientX}px`);
+    pointerRoot.style.setProperty("--pointer-y", `${event.clientY}px`);
+    pointerRoot.classList.add("wand-pointer-active");
+    if (!reducedMotion.matches) magicCursor.classList.add("is-visible");
 
     const hero = document.querySelector(".hero");
-    if (hero && event.clientY < window.innerHeight) {
+    if (!reducedMotion.matches && hero && event.clientY < window.innerHeight) {
       hero.style.setProperty("--parallax-x", `${((event.clientX / window.innerWidth) - 0.5) * 10}px`);
       hero.style.setProperty("--parallax-y", `${((event.clientY / window.innerHeight) - 0.5) * 8}px`);
       hero.classList.add("has-pointer");
     }
   }, { passive: true });
-  document.documentElement.addEventListener("pointerleave", () => magicCursor.classList.remove("is-visible"));
+  pointerRoot.addEventListener("pointerleave", () => {
+    pointerRoot.classList.remove("wand-pointer-active");
+    magicCursor.classList.remove("is-visible");
+  });
 
   document.querySelectorAll(".project-card").forEach((card) => {
     card.addEventListener("pointermove", (event) => {
