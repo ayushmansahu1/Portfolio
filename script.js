@@ -146,6 +146,12 @@ if (!reducedMotion.matches && "IntersectionObserver" in window) {
     target.classList.add("reveal-ready");
     revealObserver.observe(target);
   });
+
+  // Fail open if an observer callback is delayed or a target never crosses
+  // its threshold (for example after restoring a page mid-scroll).
+  window.setTimeout(() => {
+    revealTargets.forEach((target) => target.classList.add("is-revealed"));
+  }, 1800);
 }
 
 if (flyingWizard) {
@@ -380,6 +386,16 @@ if (flyingWizard) {
       heading.classList.add("ink-reveal");
       if (heading.closest(".secret-chapter")?.getAttribute("aria-hidden") !== "true") inkObserver.observe(heading);
     });
+    // Never leave a heading clipped if it misses the observer threshold.
+    window.setTimeout(() => {
+      headings.forEach((heading) => {
+        if (heading.closest(".secret-chapter")?.getAttribute("aria-hidden") !== "true") {
+          heading.classList.add("is-written");
+        }
+      });
+    }, 2200);
+  } else {
+    document.querySelectorAll("main section h2").forEach((heading) => heading.classList.add("is-written"));
   }
 
   // Actual skill markup is .skill-card; the timeline is .timeline inside #work.
