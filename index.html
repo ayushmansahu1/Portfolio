@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#11130f">
+    <meta name="theme-color" content="#0B1020">
     <meta name="description" content="The portfolio of Ayushman Sahu: software developer, cybersecurity trainer, and curious builder of things that matter.">
     <title>Ayushman Sahu — A little bit of magic, a lot of code</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
   </head>
@@ -62,6 +62,7 @@
           <a href="#projects">Creations</a>
           <a href="#linkedin-posts">Dispatches</a>
           <a href="#skills">Spellbook</a>
+          <a class="nav-cv" href="mailto:sahuayushman679@gmail.com?subject=Request%20for%20Ayushman%20Sahu%27s%20CV">Request CV</a>
           <a class="nav-contact" href="#contact">Say hello <span aria-hidden="true">↗</span></a>
         </nav>
       </header>
@@ -121,6 +122,7 @@
             <div class="hero-location"><span class="location-dot"></span> Brahmapur, Odisha, India <span class="location-divider">·</span> Open to what’s next</div>
           </div>
           <div class="hero-art" aria-label="An original illustration of a moonlit castle above a forest" role="img">
+            <div class="crest-panel" aria-hidden="true"><svg viewBox="0 0 200 240"><path d="M30 30H170V120C170 175 135 205 100 222C65 205 30 175 30 120Z" fill="#6E1F2A" stroke="#D9B66A" stroke-width="3"/><path d="M42 42H158V120C158 166 129 192 100 207C71 192 42 166 42 120Z" stroke="#D9B66A"/><path d="M100 62L106 80L124 86L106 92L100 110L94 92L76 86L94 80Z" fill="#D9B66A"/><path d="M62 150C78 140 92 140 100 148C108 140 122 140 138 150V176C122 166 108 166 100 174C92 166 78 166 62 176Z" stroke="#EFE3C8" stroke-width="2" fill="#6E1F2A"/><path d="M100 148V174" stroke="#EFE3C8" stroke-width="2"/></svg><span>ARS · INGENIUM · LUX</span></div>
             <div class="art-glow"></div>
             <div class="moon"></div>
             <div class="constellation constellation-one">✦ <span>·</span> &nbsp;✧<br>&nbsp;&nbsp;· &nbsp;&nbsp;&nbsp;✦</div>
@@ -216,6 +218,7 @@
             <div><span class="fact-number">05</span><span class="fact-label">major projects</span><span class="fact-detail">7+ minor projects</span></div>
             <div><span class="fact-number">∞</span><span class="fact-label">things left to learn</span></div>
           </div>
+          <div class="hero-stats" aria-label="Portfolio highlights"><div><strong>7,000+</strong><span>students reached</span></div><div><strong>05</strong><span>major projects</span></div><div><strong>01</strong><span>current role</span></div><div><strong>∞</strong><span>things to learn</span></div></div>
         </section>
 
         <section class="work-section section-wrap" id="work">
@@ -282,6 +285,7 @@
               </div>
             </article>
           </div>
+          <button class="timeline-more" type="button" aria-expanded="false">+3 more entries</button>
         </section>
 
         <section class="projects-section section-wrap" id="projects">
@@ -501,12 +505,15 @@
 
         <section class="contact-section section-wrap" id="contact">
           <div class="contact-card">
+            <span class="wax-seal" aria-hidden="true">AS</span>
             <div class="contact-stars" aria-hidden="true">✦ &nbsp; · &nbsp; ✧ &nbsp; · &nbsp; ✦</div>
             <div class="section-label"><span>08</span> YOUR NEXT CHAPTER COULD START HERE</div>
             <h2 class="display-title">Have a good<br>idea? <em>Let’s talk.</em></h2>
             <p>I’m always up for a thoughtful conversation, a useful collaboration, or a suitably ambitious side quest.</p>
             <a class="button button-gold" href="mailto:sahuayushman679@gmail.com">sahuayushman679@gmail.com <span aria-hidden="true">↗</span></a>
             <a class="contact-linkedin" href="https://www.linkedin.com/in/ayushman-sahu-8a808a2a1" target="_blank" rel="noreferrer">OR FIND ME ON LINKEDIN <span aria-hidden="true">↗</span></a>
+            <form class="contact-form" action="mailto:sahuayushman679@gmail.com" method="post" enctype="text/plain"><label class="field">Your name<input name="name" autocomplete="name" required></label><label class="field">Your email<input type="email" name="email" autocomplete="email" required></label><label class="field">Your message<textarea name="message" rows="3" required></textarea></label><button class="button button-wine" type="submit">Dispatch the Owl <span aria-hidden="true">↗</span></button></form>
+            <a class="github-link" href="https://github.com/search?q=Ayushman+Sahu&type=users" target="_blank" rel="noreferrer">Find me on GitHub <span aria-hidden="true">↗</span></a>
           </div>
         </section>
 

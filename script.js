@@ -16,6 +16,14 @@ let activeChapter = 0;
 const themeToggle = document.querySelector(".theme-toggle");
 const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 const themeRoot = document.documentElement;
+const timelineMore = document.querySelector(".timeline-more");
+const timeline = document.querySelector("#work .timeline");
+timelineMore?.addEventListener("click", () => {
+  const expanded = timelineMore.getAttribute("aria-expanded") === "true";
+  timelineMore.setAttribute("aria-expanded", String(!expanded));
+  timeline?.classList.toggle("is-expanded", !expanded);
+  timelineMore.textContent = expanded ? "+3 more entries" : "Show fewer entries";
+});
 const storedTheme = (() => {
   try { return window.localStorage.getItem("ayushman-portfolio-theme"); }
   catch { return null; }
@@ -26,7 +34,7 @@ const initialTheme = storedTheme === "light" || storedTheme === "dark"
 
 const setTheme = (theme, persist = false) => {
   themeRoot.dataset.theme = theme;
-  if (themeColorMeta) themeColorMeta.setAttribute("content", theme === "light" ? "#f4f0e6" : "#11130f");
+  if (themeColorMeta) themeColorMeta.setAttribute("content", theme === "light" ? "#F2E8D3" : "#0B1020");
   if (themeToggle) {
     const isLight = theme === "light";
     themeToggle.textContent = isLight ? "☾" : "☼";
