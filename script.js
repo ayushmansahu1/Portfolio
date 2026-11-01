@@ -1,3 +1,52 @@
+(() => {
+  const intro = document.querySelector("#cinematic-intro");
+  if (!intro) return;
+
+  const storageKey = "ayushman-chamber-intro-seen";
+  const skipButton = intro.querySelector(".intro-skip");
+  const pageShell = document.querySelector(".page-shell");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let finishTimer;
+  let removeTimer;
+
+  try {
+    if (window.localStorage.getItem(storageKey) === "true") {
+      return;
+    }
+  } catch {
+    // The intro remains usable when browser storage is unavailable.
+  }
+
+  intro.hidden = false;
+  document.body.classList.add("intro-active");
+  if (pageShell) pageShell.inert = true;
+  skipButton?.focus({ preventScroll: true });
+
+  const finishIntro = () => {
+    if (intro.classList.contains("is-ending")) return;
+    window.clearTimeout(finishTimer);
+    intro.classList.add("is-ending");
+    document.body.classList.remove("intro-active");
+    if (pageShell) pageShell.inert = false;
+    try { window.localStorage.setItem(storageKey, "true"); }
+    catch { /* The intro can still finish when browser storage is unavailable. */ }
+    removeTimer = window.setTimeout(() => {
+      intro.hidden = true;
+      skipButton?.blur();
+    }, prefersReducedMotion ? 350 : 850);
+  };
+
+  skipButton?.addEventListener("click", finishIntro);
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !intro.hidden) finishIntro();
+  });
+  finishTimer = window.setTimeout(finishIntro, prefersReducedMotion ? 1500 : 8000);
+  window.addEventListener("pagehide", () => {
+    window.clearTimeout(finishTimer);
+    window.clearTimeout(removeTimer);
+  }, { once: true });
+})();
+
 const menuToggle = document.querySelector(".menu-toggle");
 const navigation = document.querySelector("#primary-navigation");
 const flyingWizard = document.querySelector(".flying-wizard");
