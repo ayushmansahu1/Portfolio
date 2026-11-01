@@ -925,3 +925,5 @@ html{scroll-padding-top:92px}body{background:var(--ink);color:#E9DFC9;font:400 2
 .flying-wizard{display:block!important;z-index:2!important;opacity:0;filter:drop-shadow(0 3px 8px rgba(0,0,0,.7)) drop-shadow(0 0 10px rgba(217,182,106,.35))}
 .flying-wizard.is-visible{opacity:.96}
 @media(prefers-reduced-motion:reduce){.flying-wizard{animation:none!important;transition:none!important}}
+.wand-pointer{display:block!important;opacity:0;z-index:20!important;filter:drop-shadow(0 0 4px rgba(241,215,154,.9)) drop-shadow(0 2px 7px rgba(0,0,0,.85))}
+html.wand-pointer-active .wand-pointer{opacity:1}
