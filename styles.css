@@ -919,3 +919,9 @@ html{scroll-padding-top:92px}body{background:var(--ink);color:#E9DFC9;font:400 2
   #projects .project-card:first-child .tag-row{margin-top:auto;padding:16px 18px 0}
   #projects .project-card:first-child .project-live{margin:16px 18px 0;padding:12px}
 }
+
+/* Keep project metadata readable on parchment and restore the animated flyer. */
+#projects .project-card .tag-row>span{color:#3B2D20;border:1px solid #8A6E3E;background:#F2E8D3;font-weight:700;opacity:1}
+.flying-wizard{display:block!important;z-index:2!important;opacity:0;filter:drop-shadow(0 3px 8px rgba(0,0,0,.7)) drop-shadow(0 0 10px rgba(217,182,106,.35))}
+.flying-wizard.is-visible{opacity:.96}
+@media(prefers-reduced-motion:reduce){.flying-wizard{animation:none!important;transition:none!important}}
