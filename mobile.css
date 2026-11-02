@@ -1,0 +1,213 @@
+/*
+  mobile.css — phone layout fixes (screens up to 640px).
+  Load AFTER styles.css. Nothing here affects tablet or desktop.
+
+  Idea: the text sits on a solid night sky, and the castle gets its own
+  open space at the bottom of the hero instead of hiding behind the copy.
+*/
+
+@media (max-width: 640px) {
+
+  /* ---------- 1. Hero background ---------- */
+
+  /* Solid night behind all the text; it opens up only in the bottom 330px,
+     where the castle now lives. */
+  #home.hero .hero-art::before {
+    background: linear-gradient(180deg,
+      rgba(11, 16, 32, .97) 0,
+      rgba(11, 16, 32, .95) calc(100% - 330px),
+      rgba(11, 16, 32, .35) calc(100% - 210px),
+      rgba(11, 16, 32, 0)   calc(100% - 140px),
+      rgba(11, 16, 32, .55) 100%);
+  }
+
+  /* The bug: an older rule left top: 0 on the castle, so it ignored bottom
+     and stuck to the top of the hero. Pin it to the bottom explicitly. */
+  #home.hero .castle-art {
+    top: auto;
+    right: auto;
+    bottom: 34px;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    opacity: .85;
+  }
+
+  /* Give the castle room: push the scroll cue down to open a "window"
+     between the location line and the bottom of the hero. */
+  #home.hero .scroll-cue { margin-top: clamp(200px, 58vw, 250px); }
+
+  /* The crest overlapped the headline; hide it on phones. */
+  #home.hero .crest-panel { display: none; }
+
+  /* Keep the glow and the moon in the background. */
+  #home.hero .art-glow { opacity: .5; }
+  #home.hero .moon { opacity: .85; }
+  #home.hero .candles { opacity: .7; }
+
+  /* ---------- 2. Text ---------- */
+
+  #home.hero .hero-copy h1,
+  #home.hero .hero-manifesto,
+  #home.hero .hero-intro,
+  #home.hero .hero-location {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+  }
+  #home.hero .hero-intro { color: #E3D9C4; }
+  #home.hero .hero-location { color: #D6CBB4; }
+
+  /* ---------- 3. Buttons ---------- */
+
+  #home.hero .hero-actions { gap: 10px; }
+  #home.hero .hero-actions .text-link {
+    border: 1px solid rgba(217, 182, 106, .6);
+    background: rgba(11, 16, 32, .6);
+  }
+  #home.hero .hero-location { margin-top: 18px; }
+
+  /* ---------- 4. Nox + Music floating bar ---------- */
+
+  /* styles.css hides this on phones; bring it back as a compact bar. */
+  .magic-controls {
+    display: flex !important;
+    position: fixed;
+    z-index: 60;
+    left: 12px;
+    right: auto;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    gap: 6px;
+    padding: 5px;
+    border: 1px solid rgba(217, 182, 106, .4);
+    border-radius: 999px;
+    background: rgba(11, 16, 32, .9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .45);
+  }
+  .magic-controls .lumos-toggle,
+  .magic-controls .music-toggle {
+    min-width: 0;
+    height: 40px;
+    min-height: 40px;
+    padding: 0 14px !important;
+    border: 1px solid rgba(217, 182, 106, .5);
+    background: #141B30;
+    color: #F1D79A;
+    font-size: 10px !important;
+    box-shadow: none;
+  }
+  .magic-controls .music-toggle[aria-pressed="true"] {
+    border-color: #D9B66A;
+    background: #D9B66A;
+    color: #0B1020;
+  }
+  body.intro-active .magic-controls { display: none !important; }
+
+  /* Leave room so the bar never covers the footer links. */
+  .site-footer { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+
+  /* ---------- 5. Light theme ---------- */
+
+  html[data-theme="light"] #home.hero .hero-art::before {
+    background: linear-gradient(180deg,
+      rgba(245, 241, 232, .98) 0,
+      rgba(245, 241, 232, .96) calc(100% - 330px),
+      rgba(245, 241, 232, .4)  calc(100% - 210px),
+      rgba(245, 241, 232, 0)   calc(100% - 140px),
+      rgba(8, 11, 10, .3) 100%);
+  }
+  html[data-theme="light"] #home.hero .hero-copy h1,
+  html[data-theme="light"] #home.hero .hero-manifesto,
+  html[data-theme="light"] #home.hero .hero-intro,
+  html[data-theme="light"] #home.hero .hero-location { text-shadow: none; }
+  html[data-theme="light"] #home.hero .hero-intro { color: #3F4A42; }
+  html[data-theme="light"] #home.hero .hero-location { color: #556058; }
+  html[data-theme="light"] #home.hero .hero-actions .text-link {
+    border-color: rgba(148, 113, 67, .55);
+    background: rgba(255, 252, 244, .8);
+    color: #2F3932;
+  }
+  html[data-theme="light"] .magic-controls {
+    border-color: rgba(148, 113, 67, .35);
+    background: rgba(255, 250, 240, .94);
+  }
+  html[data-theme="light"] .magic-controls .lumos-toggle,
+  html[data-theme="light"] .magic-controls .music-toggle:not([aria-pressed="true"]) {
+    border-color: rgba(148, 113, 67, .45);
+    background: #FFFAF0;
+    color: #5A4222;
+  }
+}
+
+@media (max-width: 350px) {
+  .magic-controls .lumos-toggle,
+  .magic-controls .music-toggle { padding: 0 10px !important; font-size: 9px !important; }
+}
+
+/* ==========================================================
+   Floating music button (all screen sizes)
+   Small round icon in the bottom-right corner, always visible.
+   ========================================================== */
+.music-fab {
+  position: fixed;
+  z-index: 70;
+  right: max(16px, env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 1px solid rgba(217, 182, 106, .55);
+  border-radius: 50%;
+  background: rgba(11, 16, 32, .9);
+  color: #F1D79A;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: background .2s, color .2s, transform .2s, box-shadow .2s;
+}
+.music-fab svg { display: block; }
+.music-fab:hover { transform: translateY(-2px); }
+.music-fab:active { transform: scale(.94); }
+.music-fab:focus-visible { outline: 2px solid #F1D79A; outline-offset: 3px; }
+
+/* Playing: gold fill with a soft pulse ring */
+.music-fab.is-playing {
+  border-color: #D9B66A;
+  background: #D9B66A;
+  color: #0B1020;
+  animation: music-fab-pulse 2.4s ease-out infinite;
+}
+@keyframes music-fab-pulse {
+  0%   { box-shadow: 0 6px 18px rgba(0, 0, 0, .45), 0 0 0 0 rgba(217, 182, 106, .45); }
+  70%  { box-shadow: 0 6px 18px rgba(0, 0, 0, .45), 0 0 0 12px rgba(217, 182, 106, 0); }
+  100% { box-shadow: 0 6px 18px rgba(0, 0, 0, .45), 0 0 0 0 rgba(217, 182, 106, 0); }
+}
+
+/* Hidden while the cinematic intro plays */
+body.intro-active .music-fab { display: none; }
+
+/* Light theme */
+html[data-theme="light"] .music-fab:not(.is-playing) {
+  border-color: rgba(148, 113, 67, .5);
+  background: rgba(255, 250, 240, .95);
+  color: #5A4222;
+  box-shadow: 0 6px 18px rgba(66, 57, 39, .18);
+}
+
+/* Desktop: the Nox button also sits bottom-right, so move it beside the music button */
+@media (min-width: 641px) {
+  .magic-controls { right: 76px; bottom: 22px; }
+  .music-fab { bottom: 20px; right: 20px; }
+}
+
+/* Phones: slightly smaller, lined up with the Nox button on the left */
+@media (max-width: 640px) {
+  .music-fab { width: 44px; height: 44px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .music-fab, .music-fab.is-playing { animation: none; transition: none; }
+}
