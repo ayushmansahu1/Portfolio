@@ -222,17 +222,12 @@ if (flyingWizard) {
       return;
     }
 
-    const isPhone = window.innerWidth < 760;
     const cycle = ((timestamp + window.scrollY * 4.5) % 20000) / 20000;
     const progress = cycle < 0.5 ? cycle * 2 : (1 - cycle) * 2;
     const width = flyingWizard.getBoundingClientRect().width;
-    const startX = Math.max(24, window.innerWidth * (isPhone ? 0.2 : 0.39)) - width;
+    const startX = Math.max(24, window.innerWidth * (window.innerWidth < 760 ? 0.2 : 0.39)) - width;
     const x = startX + progress * (window.innerWidth - startX + width * 0.35);
-    // MOBILE: keep the wizard in a narrow band just under the header instead of
-    // drifting down across the headline and paragraph.
-    const y = isPhone
-      ? 64 + (Math.sin(timestamp / 2300 + window.scrollY / 410) + 1) * 14
-      : window.innerHeight * (0.06 + (Math.sin(timestamp / 2300 + window.scrollY / 410) + 1) * 0.09);
+    const y = window.innerHeight * (0.06 + (Math.sin(timestamp / 2300 + window.scrollY / 410) + 1) * 0.09);
     const delta = timestamp - previousTime;
     const verticalSpeed = delta > 0 ? (y - previousY) / delta : 0;
 
@@ -410,26 +405,19 @@ if (flyingWizard) {
 
   const controls = document.createElement("div");
   controls.className = "magic-controls";
-  controls.setAttribute("role", "group");
-  controls.setAttribute("aria-label", "Page effects");
   controls.appendChild(toggle);
 
   const music = document.querySelector("#hogwarts-music");
   if (music) {
-    // Small round floating button with a speaker icon only.
-    // It uses its own class (music-fab) so none of the old .music-toggle styles apply.
     const musicToggle = document.createElement("button");
-    musicToggle.className = "music-fab";
+    musicToggle.className = "music-toggle";
     musicToggle.type = "button";
-    const iconOn = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
-    const iconOff = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16.5 9.5l5 5M21.5 9.5l-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
     let autoplayBlocked = false;
     const syncMusic = (isPlaying) => {
-      musicToggle.innerHTML = isPlaying ? iconOn : iconOff;
-      musicToggle.classList.toggle("is-playing", isPlaying);
+      musicToggle.textContent = isPlaying ? "♫ Music On" : "♫ Music Off";
       musicToggle.setAttribute("aria-label", isPlaying ? "Turn background music off" : "Turn background music on");
       musicToggle.setAttribute("aria-pressed", String(isPlaying));
-      musicToggle.title = isPlaying ? "Music on (tap to mute)" : "Music off (tap to play)";
+      musicToggle.title = isPlaying ? "Turn background music off" : "Turn background music on";
     };
     const startMusic = async () => {
       if (!music.paused) {
@@ -462,7 +450,7 @@ if (flyingWizard) {
       document.removeEventListener("keydown", resumeAfterGesture, true);
     };
     const resumeAfterGesture = (event) => {
-      if (!autoplayBlocked || event.target.closest?.(".music-fab")) return;
+      if (!autoplayBlocked || event.target.closest?.(".music-toggle")) return;
       void startMusic();
     };
     document.addEventListener("pointerdown", resumeAfterGesture, true);
@@ -477,10 +465,14 @@ if (flyingWizard) {
     music.addEventListener("pause", () => syncMusic(false));
     music.addEventListener("play", () => syncMusic(true));
     syncMusic(false);
-
-    // Floating on its own in the bottom-right corner, so it can be tapped
-    // from anywhere on the page while scrolling.
-    body.appendChild(musicToggle);
+    controls.appendChild(musicToggle);
+    const phoneControlLayout = window.matchMedia("(max-width: 640px)");
+    const placeMusicToggle = () => {
+      const phoneActions = document.querySelector("#home .hero-actions");
+      (phoneControlLayout.matches && phoneActions ? phoneActions : controls).appendChild(musicToggle);
+    };
+    placeMusicToggle();
+    phoneControlLayout.addEventListener?.("change", placeMusicToggle);
     void startMusic();
   }
   body.appendChild(controls);
@@ -491,20 +483,15 @@ if (flyingWizard) {
     const candleWrap = document.createElement("div");
     candleWrap.className = "candles";
     candleWrap.setAttribute("aria-hidden", "true");
-    const isPhone = window.innerWidth < 700;
-    // MOBILE: fewer candles, and only along the edges so none sit behind text.
-    const count = isPhone ? 4 : 11;
+    const count = window.innerWidth < 700 ? 5 : 11;
     for (let i = 0; i < count; i += 1) {
       const candle = document.createElement("span");
       candle.className = "candle";
-      const left = isPhone
-        ? (i % 2 ? 84 + Math.random() * 10 : Math.random() * 8)
-        : Math.random() * 95;
-      candle.style.left = `${left}%`;
+      candle.style.left = `${Math.random() * 95}%`;
       candle.style.top = `${Math.random() * 42 + 5}%`;
       candle.style.setProperty("--candle-duration", `${5 + Math.random() * 5}s`);
       candle.style.animationDelay = `${-Math.random() * 6}s`;
-      candle.style.scale = String(isPhone ? 0.5 + Math.random() * 0.3 : 0.6 + Math.random() * 0.6);
+      candle.style.scale = String(0.6 + Math.random() * 0.6);
       candleWrap.appendChild(candle);
     }
     const heroArt = hero.querySelector(".hero-art");
