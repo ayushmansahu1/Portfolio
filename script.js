@@ -475,13 +475,6 @@ if (flyingWizard) {
     syncMusic(false);
 
     controls.appendChild(musicToggle);
-    const phoneControlLayout = window.matchMedia("(max-width: 640px)");
-    const placeMusicToggle = () => {
-      const heroActions = document.querySelector("#home .hero-actions");
-      (phoneControlLayout.matches && heroActions ? heroActions : controls).appendChild(musicToggle);
-    };
-    placeMusicToggle();
-    phoneControlLayout.addEventListener?.("change", placeMusicToggle);
     void startMusic();
   }
   body.appendChild(controls);
