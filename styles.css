@@ -1180,3 +1180,24 @@ html.wand-pointer-active .wand-pointer{opacity:1}
   #home.hero .hero-location .location-divider { display: none; }
 }
 .hero-stats small { display: block; margin-top: 3px; font: inherit; opacity: .78; }
+.music-toggle {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  padding: 0 !important;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 17px !important;
+  line-height: 1;
+  letter-spacing: 0;
+}
+.music-toggle[aria-pressed="true"] {
+  border-color: var(--gold-light);
+  box-shadow: 0 0 0 2px rgba(241, 215, 154, .15), 0 8px 30px rgba(0, 0, 0, .3);
+}
+@media (max-width: 760px) {
+  .music-toggle { width: 38px; height: 38px; }
+}
+@media (max-width: 350px) {
+  .music-toggle { width: 34px; height: 34px; font-size: 15px !important; }
+}

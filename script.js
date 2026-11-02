@@ -412,29 +412,61 @@ if (flyingWizard) {
     const musicToggle = document.createElement("button");
     musicToggle.className = "music-toggle";
     musicToggle.type = "button";
+    let autoplayBlocked = false;
     const syncMusic = (isPlaying) => {
-      musicToggle.textContent = isPlaying ? "♫ ON" : "♫ OFF";
+      musicToggle.textContent = isPlaying ? "♫" : "♪";
       musicToggle.setAttribute("aria-label", isPlaying ? "Turn background music off" : "Turn background music on");
       musicToggle.setAttribute("aria-pressed", String(isPlaying));
       musicToggle.title = isPlaying ? "Turn background music off" : "Turn background music on";
     };
-    musicToggle.addEventListener("click", async () => {
+    const startMusic = async () => {
       if (!music.paused) {
-        music.pause();
-        syncMusic(false);
-        return;
+        removeResumeListeners();
+        syncMusic(true);
+        return true;
       }
       try {
+        music.volume = 0.35;
         await music.play();
+        autoplayBlocked = false;
+        removeResumeListeners();
         syncMusic(true);
-      } catch {
+        return true;
+      } catch (error) {
+        autoplayBlocked = error?.name === "NotAllowedError";
+        if (!autoplayBlocked) removeResumeListeners();
         syncMusic(false);
+        return false;
       }
+    };
+    const stopMusic = () => {
+      autoplayBlocked = false;
+      removeResumeListeners();
+      music.pause();
+      syncMusic(false);
+    };
+    const removeResumeListeners = () => {
+      document.removeEventListener("pointerdown", resumeAfterGesture, true);
+      document.removeEventListener("keydown", resumeAfterGesture, true);
+    };
+    const resumeAfterGesture = (event) => {
+      if (!autoplayBlocked || event.target.closest?.(".music-toggle")) return;
+      void startMusic();
+    };
+    document.addEventListener("pointerdown", resumeAfterGesture, true);
+    document.addEventListener("keydown", resumeAfterGesture, true);
+    musicToggle.addEventListener("click", () => {
+      if (!music.paused) {
+        stopMusic();
+        return;
+      }
+      void startMusic();
     });
     music.addEventListener("pause", () => syncMusic(false));
     music.addEventListener("play", () => syncMusic(true));
     syncMusic(false);
     controls.appendChild(musicToggle);
+    void startMusic();
   }
   body.appendChild(controls);
 
