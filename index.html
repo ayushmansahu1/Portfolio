@@ -11,7 +11,147 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 
-    <link rel="stylesheet" href="mobile.css">
+    <!--
+      MOBILE READABILITY LAYER (temporary, inline)
+      Loaded after styles.css so it wins. Once you send styles.css,
+      these rules will be merged into it and this block can be removed.
+    -->
+    <style id="mobile-readability">
+      @media (max-width: 760px) {
+        /* 1. Hero becomes a layered stage: art at the back, scrim in the middle, text on top */
+        .hero {
+          position: relative;
+          isolation: isolate;
+          overflow: hidden;
+        }
+        .hero-art {
+          z-index: 0 !important;
+          pointer-events: none;
+        }
+        .hero-copy,
+        .scroll-cue {
+          position: relative;
+          z-index: 3 !important;
+        }
+
+        /* 2. Dim the castle so it reads as atmosphere, not as content */
+        .hero-art .castle-art {
+          opacity: .45;
+          filter: saturate(.75) brightness(.8);
+        }
+        .hero-art .castle-windows { opacity: .55; }
+        .hero-art .art-glow,
+        .hero-art .castle-mist { opacity: .35; }
+
+        /* 3. Remove the decorations that sat right on top of the paragraph */
+        .hero-art .crest-panel,
+        .hero-art .art-stamp,
+        .hero-art .constellation {
+          display: none !important;
+        }
+        .hero-art .moon {
+          opacity: .5;
+          transform: scale(.7);
+          transform-origin: top right;
+        }
+
+        /* 4. The scrim: solid night where text lives, fading out so the castle shows at the bottom */
+        .hero-scrim {
+          display: block;
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          pointer-events: none;
+          background:
+            linear-gradient(180deg,
+              rgba(11, 16, 32, .96) 0%,
+              rgba(11, 16, 32, .9) 45%,
+              rgba(11, 16, 32, .72) 72%,
+              rgba(11, 16, 32, .25) 100%);
+        }
+        [data-theme="light"] .hero-scrim {
+          background:
+            linear-gradient(180deg,
+              rgba(244, 236, 220, .97) 0%,
+              rgba(244, 236, 220, .92) 45%,
+              rgba(244, 236, 220, .75) 72%,
+              rgba(244, 236, 220, .3) 100%);
+        }
+
+        /* 5. Text gets a soft shadow so edges stay crisp over any stray glow */
+        .hero-copy h1,
+        .hero-copy .hero-manifesto,
+        .hero-copy .hero-intro,
+        .hero-copy .eyebrow,
+        .hero-copy .hero-location {
+          text-shadow: 0 1px 2px rgba(0, 0, 0, .55), 0 0 18px rgba(11, 16, 32, .8);
+        }
+        [data-theme="light"] .hero-copy h1,
+        [data-theme="light"] .hero-copy .hero-manifesto,
+        [data-theme="light"] .hero-copy .hero-intro,
+        [data-theme="light"] .hero-copy .eyebrow,
+        [data-theme="light"] .hero-copy .hero-location {
+          text-shadow: none;
+        }
+        .hero-copy .hero-intro {
+          line-height: 1.55;
+          max-width: 34ch;
+        }
+
+        /* 6. Buttons: full width, solid, easy to tap (min 48px) */
+        .hero-actions {
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: .75rem;
+          margin-top: 1.5rem;
+        }
+        .hero-actions .button,
+        .hero-actions .text-link {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 48px;
+          width: 100%;
+          box-sizing: border-box;
+          text-align: center;
+        }
+        .hero-actions .text-link {
+          padding: .75rem 1.25rem;
+          border: 1px solid rgba(217, 182, 106, .55);
+          border-radius: 2px;
+          background: rgba(11, 16, 32, .75);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+        }
+        [data-theme="light"] .hero-actions .text-link {
+          background: rgba(255, 250, 240, .85);
+        }
+
+        /* 7. Location row stacks cleanly instead of colliding */
+        .hero-location {
+          display: flex;
+          flex-direction: column;
+          gap: .35rem;
+          margin-top: 1.5rem;
+        }
+        .hero-location .location-divider { display: none; }
+
+        /* 8. Flying wizard stays behind the content and out of the way */
+        .flying-wizard {
+          z-index: 1 !important;
+          opacity: .55;
+          pointer-events: none;
+        }
+      }
+
+      /* Scrim is hidden on larger screens */
+      .hero-scrim { display: none; }
+
+      @media (prefers-reduced-motion: reduce) {
+        .flying-wizard { display: none; }
+      }
+    </style>
 
     <script src="script.js" defer></script>
   </head>
