@@ -402,7 +402,41 @@ if (flyingWizard) {
     syncLumos();
   });
   syncLumos();
-  body.appendChild(toggle);
+
+  const controls = document.createElement("div");
+  controls.className = "magic-controls";
+  controls.appendChild(toggle);
+
+  const music = document.querySelector("#hogwarts-music");
+  if (music) {
+    const musicToggle = document.createElement("button");
+    musicToggle.className = "music-toggle";
+    musicToggle.type = "button";
+    const syncMusic = (isPlaying) => {
+      musicToggle.textContent = isPlaying ? "♫ ON" : "♫ OFF";
+      musicToggle.setAttribute("aria-label", isPlaying ? "Turn background music off" : "Turn background music on");
+      musicToggle.setAttribute("aria-pressed", String(isPlaying));
+      musicToggle.title = isPlaying ? "Turn background music off" : "Turn background music on";
+    };
+    musicToggle.addEventListener("click", async () => {
+      if (!music.paused) {
+        music.pause();
+        syncMusic(false);
+        return;
+      }
+      try {
+        await music.play();
+        syncMusic(true);
+      } catch {
+        syncMusic(false);
+      }
+    });
+    music.addEventListener("pause", () => syncMusic(false));
+    music.addEventListener("play", () => syncMusic(true));
+    syncMusic(false);
+    controls.appendChild(musicToggle);
+  }
+  body.appendChild(controls);
 
   // Floating candles stay behind hero content and never intercept clicks.
   const hero = document.querySelector("#home");

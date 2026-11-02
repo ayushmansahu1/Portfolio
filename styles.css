@@ -1037,3 +1037,145 @@ html.wand-pointer-active .wand-pointer{opacity:1}
   .hero-art { height: 300px; }
   .hero-location .location-divider { display: none; }
 }
+
+/* Keep the music switch directly beside Lumos/Nox on every screen. */
+.magic-controls {
+  position: fixed;
+  z-index: 10;
+  right: 22px;
+  bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.magic-controls .lumos-toggle,
+.music-toggle {
+  position: static;
+  padding: 10px 13px;
+  border: 1px solid rgba(211, 174, 112, .5);
+  border-radius: 999px;
+  background: rgba(16, 19, 15, .92);
+  color: var(--gold-light);
+  font: 600 10px var(--sans);
+  letter-spacing: .04em;
+  white-space: nowrap;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, .3);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+}
+.music-toggle[aria-pressed="true"] { background: rgba(89, 65, 29, .95); }
+.magic-controls button:hover { background: rgba(211, 174, 112, .2); }
+.magic-controls button:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+@media (max-width: 760px) {
+  .magic-controls { right: auto; bottom: 18px; left: 16px; gap: 6px; }
+  .magic-controls .lumos-toggle,
+  .music-toggle { padding: 9px 11px; font-size: 9px; }
+}
+@media (max-width: 350px) {
+  .magic-controls { bottom: 14px; left: 10px; gap: 5px; }
+  .magic-controls .lumos-toggle,
+  .music-toggle { padding: 8px 9px; font-size: 8px; }
+}
+
+/* Final phone hero pass: remove layered desktop effects and let content breathe. */
+@media (max-width: 760px) {
+  #home.hero {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 22px !important;
+    width: 100%;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 42px clamp(20px, 6vw, 28px) 30px !important;
+    overflow: hidden !important;
+  }
+  #home.hero .hero-copy {
+    position: relative !important;
+    inset: auto !important;
+    z-index: 2 !important;
+    width: 100% !important;
+    max-width: 560px;
+    padding: 0 !important;
+  }
+  #home.hero .eyebrow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px 8px;
+    margin: 0 0 18px;
+    font-size: clamp(7px, 2vw, 9px);
+    line-height: 1.7;
+    letter-spacing: .11em;
+  }
+  #home.hero h1 {
+    max-width: 100%;
+    font-size: clamp(38px, 11.5vw, 64px) !important;
+    line-height: .98 !important;
+    letter-spacing: -.025em !important;
+    overflow-wrap: anywhere;
+  }
+  #home.hero .hero-manifesto {
+    margin: 14px 0 0;
+    font-size: clamp(22px, 6vw, 30px) !important;
+    line-height: 1.2;
+  }
+  #home.hero .hero-intro {
+    max-width: 52ch;
+    margin: 14px 0 20px;
+    font-size: clamp(16px, 4.5vw, 18px) !important;
+    line-height: 1.55;
+  }
+  #home.hero .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 18px;
+  }
+  #home.hero .hero-actions .button {
+    min-height: 48px;
+    padding: 13px 17px;
+    font-size: 9px;
+  }
+  #home.hero .hero-actions .text-link { font-size: 10px; }
+  #home.hero .hero-location {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px 7px;
+    margin-top: 18px;
+    font-size: clamp(8px, 2.4vw, 9px);
+    line-height: 1.6;
+  }
+  #home.hero .hero-art {
+    position: relative !important;
+    inset: auto !important;
+    z-index: 1 !important;
+    display: block;
+    flex: none;
+    width: 100% !important;
+    height: clamp(280px, 82vw, 360px) !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    border-radius: clamp(100px, 30vw, 150px) clamp(100px, 30vw, 150px) 4px 4px;
+  }
+  #home.hero .hero-art::before {
+    inset: 0;
+    background: linear-gradient(180deg, rgba(8, 11, 10, .06), transparent 42%, rgba(8, 11, 10, .45));
+  }
+  #home.hero .crest-panel { inset: 7% 0 auto; gap: 5px; font-size: 7px; }
+  #home.hero .crest-panel svg { width: clamp(78px, 22vw, 96px); height: auto; }
+  #home.hero .art-caption { right: 12px; bottom: 12px; left: 12px; gap: 8px; font-size: 6px; }
+  .flying-wizard,
+  #home.hero .candles,
+  #home.hero .candle,
+  #home.hero .flight-trail { display: none !important; }
+}
+
+@media (max-width: 390px) {
+  #home.hero { gap: 18px !important; padding-top: 34px !important; }
+  #home.hero h1 { font-size: clamp(36px, 10.5vw, 43px) !important; }
+  #home.hero .hero-actions { align-items: flex-start; flex-direction: column; gap: 12px; }
+  #home.hero .hero-actions .button { width: 100%; justify-content: center; }
+  #home.hero .hero-art { height: 280px !important; }
+  #home.hero .hero-location .location-divider { display: none; }
+}
