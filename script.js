@@ -416,16 +416,12 @@ if (flyingWizard) {
 
   const music = document.querySelector("#hogwarts-music");
   if (music) {
-    // Small round floating button with a speaker icon only.
-    // It uses its own class (music-fab) so none of the old .music-toggle styles apply.
     const musicToggle = document.createElement("button");
-    musicToggle.className = "music-fab";
+    musicToggle.className = "music-toggle";
     musicToggle.type = "button";
-    const iconOn = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
-    const iconOff = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16.5 9.5l5 5M21.5 9.5l-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
     let autoplayBlocked = false;
     const syncMusic = (isPlaying) => {
-      musicToggle.innerHTML = isPlaying ? iconOn : iconOff;
+      musicToggle.textContent = isPlaying ? "♫ Music On" : "♫ Music Off";
       musicToggle.classList.toggle("is-playing", isPlaying);
       musicToggle.setAttribute("aria-label", isPlaying ? "Turn background music off" : "Turn background music on");
       musicToggle.setAttribute("aria-pressed", String(isPlaying));
@@ -462,7 +458,7 @@ if (flyingWizard) {
       document.removeEventListener("keydown", resumeAfterGesture, true);
     };
     const resumeAfterGesture = (event) => {
-      if (!autoplayBlocked || event.target.closest?.(".music-fab")) return;
+      if (!autoplayBlocked || event.target.closest?.(".music-toggle")) return;
       void startMusic();
     };
     document.addEventListener("pointerdown", resumeAfterGesture, true);
@@ -478,9 +474,14 @@ if (flyingWizard) {
     music.addEventListener("play", () => syncMusic(true));
     syncMusic(false);
 
-    // Floating on its own in the bottom-right corner, so it can be tapped
-    // from anywhere on the page while scrolling.
-    body.appendChild(musicToggle);
+    controls.appendChild(musicToggle);
+    const phoneControlLayout = window.matchMedia("(max-width: 640px)");
+    const placeMusicToggle = () => {
+      const heroActions = document.querySelector("#home .hero-actions");
+      (phoneControlLayout.matches && heroActions ? heroActions : controls).appendChild(musicToggle);
+    };
+    placeMusicToggle();
+    phoneControlLayout.addEventListener?.("change", placeMusicToggle);
     void startMusic();
   }
   body.appendChild(controls);
