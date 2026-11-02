@@ -1179,3 +1179,4 @@ html.wand-pointer-active .wand-pointer{opacity:1}
   #home.hero .hero-art { height: 280px !important; }
   #home.hero .hero-location .location-divider { display: none; }
 }
+.hero-stats small { display: block; margin-top: 3px; font: inherit; opacity: .78; }
