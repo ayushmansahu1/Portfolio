@@ -466,6 +466,13 @@ if (flyingWizard) {
     music.addEventListener("play", () => syncMusic(true));
     syncMusic(false);
     controls.appendChild(musicToggle);
+    const phoneControlLayout = window.matchMedia("(max-width: 640px)");
+    const placeMusicToggle = () => {
+      const phoneActions = document.querySelector("#home .hero-actions");
+      (phoneControlLayout.matches && phoneActions ? phoneActions : controls).appendChild(musicToggle);
+    };
+    placeMusicToggle();
+    phoneControlLayout.addEventListener?.("change", placeMusicToggle);
     void startMusic();
   }
   body.appendChild(controls);
@@ -487,7 +494,11 @@ if (flyingWizard) {
       candle.style.scale = String(0.6 + Math.random() * 0.6);
       candleWrap.appendChild(candle);
     }
-    hero.prepend(candleWrap);
+    const heroArt = hero.querySelector(".hero-art");
+    const candleLayout = window.matchMedia("(max-width: 640px)");
+    const placeCandles = () => (candleLayout.matches && heroArt ? heroArt : hero).prepend(candleWrap);
+    placeCandles();
+    candleLayout.addEventListener?.("change", placeCandles);
   }
 
   // Ink reveal applies to the existing section title class as it enters view.
