@@ -414,7 +414,7 @@ if (flyingWizard) {
     musicToggle.type = "button";
     let autoplayBlocked = false;
     const syncMusic = (isPlaying) => {
-      musicToggle.textContent = isPlaying ? "♫" : "♪";
+      musicToggle.textContent = isPlaying ? "♫ Music On" : "♫ Music Off";
       musicToggle.setAttribute("aria-label", isPlaying ? "Turn background music off" : "Turn background music on");
       musicToggle.setAttribute("aria-pressed", String(isPlaying));
       musicToggle.title = isPlaying ? "Turn background music off" : "Turn background music on";
