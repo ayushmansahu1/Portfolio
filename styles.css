@@ -957,3 +957,83 @@ html.wand-pointer-active .wand-pointer{opacity:1}
 @keyframes intro-title-sweep{from{background-position:100% 50%}to{background-position:0 50%}}
 @media(max-width:600px){.intro-copy{width:96vw;padding:18px}.intro-welcome{letter-spacing:.24em}.intro-title{font-size:clamp(30px,8vw,48px);letter-spacing:0}.intro-cloud{filter:blur(36px)}.intro-skip{top:18px;right:18px;font-size:9px;padding:10px 12px}}
 @media(prefers-reduced-motion:reduce){.cinematic-intro{transition:opacity .3s ease,transform .3s ease}.intro-sky,.intro-cloud,.intro-stars,.intro-dust,.intro-welcome,.intro-title{animation:none!important}.intro-welcome{display:none}.intro-title{opacity:1;transform:none;filter:none;background-position:50% 50%;text-shadow:0 0 22px rgba(217,182,106,.32)}}
+
+/* Phone layouts: keep the copy and castle in separate, naturally sized blocks. */
+@media (max-width: 760px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    min-height: 0;
+    padding: clamp(32px, 8vw, 56px) clamp(18px, 6vw, 30px) 28px;
+    overflow: hidden;
+  }
+  .hero-copy {
+    width: 100%;
+    max-width: 560px;
+    padding: 0;
+  }
+  .eyebrow {
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 20px;
+    font-size: clamp(7px, 2vw, 9px);
+    line-height: 1.65;
+    letter-spacing: .12em;
+  }
+  .hero h1 {
+    font-size: clamp(48px, 12.5vw, 76px);
+    line-height: .92;
+    letter-spacing: -.045em;
+    overflow-wrap: anywhere;
+  }
+  .hero-manifesto {
+    margin-top: 14px;
+    font-size: clamp(22px, 6.2vw, 32px);
+    line-height: 1.18;
+  }
+  .hero-intro {
+    max-width: 52ch;
+    margin: 14px 0 20px;
+    font-size: clamp(16px, 4.5vw, 19px);
+    line-height: 1.5;
+  }
+  .hero-actions { gap: 14px 18px; }
+  .hero-actions .button { min-height: 48px; padding: 13px 16px; font-size: 9px; }
+  .hero-actions .text-link { font-size: 11px; }
+  .hero-location {
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 18px;
+    font-size: clamp(8px, 2.5vw, 10px);
+    line-height: 1.6;
+  }
+  .hero-art {
+    position: relative;
+    inset: auto;
+    flex: none;
+    width: 100%;
+    height: clamp(300px, 92vw, 440px);
+    min-height: 0;
+    margin: 0;
+    overflow: hidden;
+    border-radius: clamp(110px, 34vw, 180px) clamp(110px, 34vw, 180px) 4px 4px;
+  }
+  .hero-art::before {
+    inset: 0;
+    background: linear-gradient(180deg, rgba(8, 11, 10, .08), transparent 35%, rgba(8, 11, 10, .42) 100%);
+  }
+  .crest-panel { inset: 7% 0 auto; gap: 6px; font-size: 8px; }
+  .crest-panel svg { width: clamp(82px, 24vw, 112px); height: auto; }
+  .art-caption { right: 12px; bottom: 12px; left: 12px; gap: 8px; font-size: 6px; }
+  .flying-wizard { display: none !important; }
+}
+
+@media (max-width: 380px) {
+  .hero { gap: 20px; }
+  .hero h1 { font-size: clamp(43px, 12vw, 48px); }
+  .hero-actions { align-items: flex-start; flex-direction: column; }
+  .hero-art { height: 300px; }
+  .hero-location .location-divider { display: none; }
+}
