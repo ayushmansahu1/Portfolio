@@ -13,14 +13,14 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <audio id="hogwarts-music" autoplay preload="auto" loop aria-hidden="true">
+    <audio id="hogwarts-music" preload="auto" loop aria-hidden="true">
       <source src="assets/hedwigs-song.mp4" type="audio/mp4">
     </audio>
     <div class="cinematic-intro" id="cinematic-intro" role="dialog" aria-modal="true" aria-labelledby="intro-title" hidden>
       <div class="intro-sky" aria-hidden="true"><span class="intro-cloud intro-cloud-one"></span><span class="intro-cloud intro-cloud-two"></span><span class="intro-cloud intro-cloud-three"></span><span class="intro-stars"></span><span class="intro-dust"></span></div>
       <div class="intro-copy">
         <p class="intro-welcome">Welcome to</p>
-        <h1 class="intro-title" id="intro-title">Ayushman’s Chamber<br><span>of Creations</span></h1>
+        <h1 class="intro-title" id="intro-title">Ayushman’s Chamber<br><span>of Creation</span></h1>
       </div>
       <button class="intro-skip" type="button">Skip intro <span aria-hidden="true">↗</span></button>
     </div>
@@ -96,6 +96,13 @@
             <path d="m51 77 128-18" fill="none" stroke-width="3.6"/>
             <path d="M53 77q-11-9-25-13 8 12-1 22 13-5 25-4 7 4 14 3-6-5-6-10 5-6 8-12-9 3-15 14Z" stroke-width="1"/>
             <path d="m51 77-16-11m11 16-16 2m21-5-12-15m18 13-14-12" fill="none" stroke-width="1.1"/>
+          </g>
+          <g class="broom-glitter" fill="#fff0bd" filter="url(#flight-glow)" aria-hidden="true">
+            <path class="broom-glitter-star" d="m31 78 1.7 4.2 4.3 1.8-4.3 1.7-1.7 4.3-1.8-4.3-4.2-1.7 4.2-1.8z"/>
+            <circle class="broom-glitter-dot broom-glitter-dot-one" cx="38" cy="70" r="1.8"/>
+            <circle class="broom-glitter-dot broom-glitter-dot-two" cx="24" cy="88" r="1.4"/>
+            <path class="broom-glitter-star broom-glitter-star-two" d="m45 84 1.2 2.8 2.8 1.2-2.8 1.2-1.2 2.8-1.2-2.8-2.8-1.2 2.8-1.2z"/>
+            <circle class="broom-glitter-dot broom-glitter-dot-three" cx="43" cy="73" r="1.2"/>
           </g>
           <g class="flight-rider" transform="translate(-31.25 -12) scale(1.25)" stroke-linecap="round" stroke-linejoin="round">
             <!-- Cloak and bent legs make the flying pose read at a glance. -->
