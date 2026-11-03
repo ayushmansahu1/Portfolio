@@ -475,9 +475,9 @@ if (flyingWizard) {
     syncMusic(false);
 
     controls.appendChild(musicToggle);
-    // The opening track belongs to the welcome screen. Returning visits can
-    // still start it from the music control when they choose to.
-    if (document.querySelector("#cinematic-intro")?.hidden === false) void startMusic();
+    // Music is on by default; if the browser blocks autoplay, the first
+    // interaction resumes it automatically.
+    void startMusic();
   }
   body.appendChild(controls);
 

@@ -370,9 +370,10 @@ html.wand-pointer-active .wand-pointer { opacity: 1; }
 .constellation { animation: star-flicker 4s ease-in-out infinite alternate; }
 .constellation-two { animation-delay: -2s; }
 .flight-trail { animation: trail-glint 1.8s ease-in-out infinite alternate; }
-.broom-glitter-star,.broom-glitter-dot{transform-box:fill-box;transform-origin:center;animation:broom-glitter-drift 1.35s ease-out infinite}
+.broom-glitter-star,.broom-glitter-dot{transform-box:fill-box;transform-origin:center;animation:broom-glitter-drift 2.2s ease-out infinite}
 .broom-glitter-dot-one{animation-delay:-.42s}.broom-glitter-dot-two{animation-delay:-.9s}.broom-glitter-star-two{animation-delay:-.68s}.broom-glitter-dot-three{animation-delay:-1.12s}
-@keyframes broom-glitter-drift{0%{opacity:0;transform:translate(0,0) scale(.35)}18%{opacity:1}100%{opacity:0;transform:translate(-13px,-10px) scale(.08)}}
+.broom-glitter-star-three{animation-delay:-1.4s}.broom-glitter-dot-four{animation-delay:-1.72s}.broom-glitter-dot-five{animation-delay:-.25s}.broom-glitter-star-four{animation-delay:-1.95s}.broom-glitter-dot-six{animation-delay:-.75s}
+@keyframes broom-glitter-drift{0%{opacity:0;transform:translate(0,0) scale(.35)}14%{opacity:1}100%{opacity:0;transform:translate(-30px,-18px) scale(.06)}}
 .project-card { transform-style: preserve-3d; transition: border-color .25s, transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .3s; }
 .project-card:hover { transform: translateY(-4px) perspective(900px) rotateX(var(--card-tilt-y, 0deg)) rotateY(var(--card-tilt-x, 0deg)); }
 @keyframes arrive { from { opacity: 0; transform: translateY(16px); filter: blur(4px); } to { opacity: 1; transform: translateY(0); filter: blur(0); } }
