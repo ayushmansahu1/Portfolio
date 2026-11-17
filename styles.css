@@ -931,6 +931,7 @@ html{scroll-padding-top:92px}body{background:var(--ink);color:#E9DFC9;font:400 2
 @media(prefers-reduced-motion:reduce){.flying-wizard{animation:none!important;transition:none!important}}
 .wand-pointer{display:block!important;opacity:0;z-index:20!important;filter:drop-shadow(0 0 4px rgba(241,215,154,.9)) drop-shadow(0 2px 7px rgba(0,0,0,.85))}
 html.wand-pointer-active .wand-pointer{opacity:1}
+.crest-panel img{display:block;width:clamp(125px,14vw,180px);height:auto;filter:drop-shadow(0 8px 18px rgba(0,0,0,.5))}
 
 /* First-visit cinematic welcome */
 .cinematic-intro{position:fixed;z-index:1000;inset:0;display:grid;place-items:center;overflow:hidden;background:#070913;color:#F3EAD6;isolation:isolate;opacity:1;transition:opacity .85s ease,transform 1s cubic-bezier(.2,.75,.2,1)}
