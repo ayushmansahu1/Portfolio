@@ -71,7 +71,7 @@ timelineMore?.addEventListener("click", () => {
   const expanded = timelineMore.getAttribute("aria-expanded") === "true";
   timelineMore.setAttribute("aria-expanded", String(!expanded));
   timeline?.classList.toggle("is-expanded", !expanded);
-  timelineMore.textContent = expanded ? "+4 more entries" : "Show fewer entries";
+  timelineMore.textContent = expanded ? "+5 more entries" : "Show fewer entries";
 });
 const storedTheme = (() => {
   try { return window.localStorage.getItem("ayushman-portfolio-theme"); }
